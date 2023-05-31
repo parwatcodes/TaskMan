@@ -1,0 +1,21 @@
+body {
+  margin: 50px;
+}
+
+.main {
+  display: flex;
+}
+.container {
+  width: auto;
+  background-color: #E6ECF0;
+  border-radius: 5px 5px 0px 0px;
+  padding: 20px;
+}
+
+.main div:not(:last-child) {
+  /* margin-right: 25px; */
+}
+
+.container .card:not(:last-child) {
+  margin-bottom: 20px;
+}
