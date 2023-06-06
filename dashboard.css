@@ -37,7 +37,7 @@ body {
 .mainHeader {
   display: flex;
   justify-content: center;
-  padding: 23px 469px;
+  height: 70px;
   color: #FFFFFF;
   background-color: #212cb5;
 }
@@ -45,13 +45,15 @@ body {
 .subBar {
   display: flex;
   align-items: center;
-  padding: 15px 55px;
+  height: 70px;
   background-color: #E6ECF0;
 }
 
 .subBar .title {
   display: flex;
   align-items: center;
+  width: 90%;
+  margin: auto;
 }
 
 .subBar .title h5 {
@@ -89,9 +91,26 @@ body {
 }
 
 .cardType {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 10px;
+}
+
+.cardType .actions {
+  display: flex;
+}
+
+.cardType .actions div {
+  padding: 5px 10px;
+  border-radius: 20px;
+  background-color: #D5D5D5;
+}
+
+.cardType .actions div:last-child{
+  margin-left: 10px;
 }
 
 .rounded-circle {
