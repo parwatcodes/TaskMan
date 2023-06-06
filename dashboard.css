@@ -49,6 +49,23 @@ body {
   background-color: #E6ECF0;
 }
 
+.subBar .title {
+  display: flex;
+  align-items: center;
+}
+
+.subBar .title h5 {
+  margin-bottom: 0px;
+}
+
+.subBar .title span {
+  margin-left: 15px;
+  background-color: blue;
+  color: white;
+  padding: 1px 12px;
+  border-radius: 5px;
+}
+
 .searchContainer {
   display: flex;
   align-items: center;

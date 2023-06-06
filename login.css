@@ -3,12 +3,12 @@
   margin: auto;
   width: 50%;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: 80px;
 }
 
 .main .container {
   width: inherit;
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .container .title {
@@ -38,4 +38,24 @@
 .login-form button {
   font-size: 18px;
   font-weight: 500;
+  margin-bottom: 0px !important;
+}
+
+.register-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(206, 202, 202);
+  border-radius: 8px;
+  padding: 20px 30px;
+  margin-top: 20px;
+}
+
+.register-link a {
+  text-decoration-line: none;
+  margin-left: 5px;
+}
+
+.register-link p {
+  margin-bottom: 0px;
 }
