@@ -1,0 +1,62 @@
+{
+  "administrators": [
+    {
+      "id": 1,
+      "name": "Dave Reese",
+      "role": "admin",
+      "email": "dave.reese@gmail.com",
+      "password": "Dave@123"
+    },
+    {
+      "id": 2,
+      "name": "Sophia Payne",
+      "role": "admin",
+      "email": "sophia.payne@gmail.com",
+      "password": "Sophia@123"
+    }
+  ],
+  "members": [
+    {
+      "id": 3,
+      "name": "Fane Roland",
+      "role": "member",
+      "email": "fane.roland@gmail.com",
+      "password": "Fane@123"
+    },
+    {
+      "id": 4,
+      "name": "Kallisto Pece",
+      "role": "member",
+      "email": "kallisto.peter@gmail.com",
+      "password": "Kallisto@123"
+    },
+    {
+      "id": 5,
+      "name": "Emanuel Benedikt",
+      "role": "member",
+      "email": "emanuel.benedikt@gmail.com",
+      "password": "Emanuel@123"
+    },
+    {
+      "id": 6,
+      "name": "Peter Kevin",
+      "role": "member",
+      "email": "peter.kevin@gmail.com",
+      "password": "Peter@123"
+    },
+    {
+      "id": 7,
+      "name": "Michael Gor",
+      "role": "member",
+      "email": "michael.gor@gmail.com",
+      "password": "Michael@123"
+    },
+    {
+      "id": 8,
+      "name": "Silvius Abdul",
+      "role": "member",
+      "email": "silvius.adbul@gmail.com",
+      "password": "Silvius@123"
+    }
+  ]
+}
