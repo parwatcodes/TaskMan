@@ -15,14 +15,24 @@
   font-size: 17px;
   width: 40%;
   margin: auto;
-  padding: 20px;
+  padding: 30px 40px;
   background-color: rgb(237, 239, 241);
   border-radius: 10px;
+  position: relative;
 }
 
 .mainContent .title {
   display: flex;
   align-items: center;
+}
+
+.mainContent .title input {
+  height: 50px;
+  width: 350px;
+  border: 2px solid #E6ECF0;
+  border-radius: 4px;
+  padding-left: 10px;
+  outline: none;
 }
 
 .mainContent .title h5 {
@@ -31,20 +41,41 @@
 
 .mainContent .list {
   margin-left: 40px;
-  color: #7c7878;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #494848;
 
 }
 
 .content {
   display: flex;
   justify-content: space-between;
+  margin-top: 30px;
+}
+
+.content textarea {
+  width: 350px;
+  height: 200px;
+  border: 2px solid #E6ECF0;
+  border-radius: 4px;
+  padding: 10px;
+  outline: none;
 }
 
 .close {
   color: #aaaaaa;
   float: right;
-  font-size: 28px;
+  font-size: 50px;
   font-weight: bold;
+  position: absolute;
+  right: 25px;
+  top: 0px;
+  cursor: pointer;
+}
+
+.close:hover{
+  color: grey;
 }
 
 .action div {
@@ -56,4 +87,12 @@
 
 .action div:not(:last-child) {
   margin-bottom: 10px;
+}
+
+.cur {
+  cursor: pointer;
+}
+
+#descp {
+  font-weight: 500;
 }

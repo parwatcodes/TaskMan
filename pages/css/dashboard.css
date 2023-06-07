@@ -42,6 +42,23 @@ body {
   background-color: #212cb5;
 }
 
+.mainHeader .menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+.mainHeader .menu div {
+  padding: 20px 30px;
+  cursor: pointer;
+}
+
+.mainHeader .menu div:hover {
+  color: yellow;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
 .subBar {
   display: flex;
   align-items: center;
@@ -61,7 +78,7 @@ body {
 }
 
 .subBar .title span {
-  margin-left: 15px;
+  margin-left: 10px;
   background-color: blue;
   color: white;
   padding: 1px 12px;
@@ -109,7 +126,7 @@ body {
   background-color: #D5D5D5;
 }
 
-.cardType .actions div:last-child{
+.cardType .actions div:last-child {
   margin-left: 10px;
 }
 
