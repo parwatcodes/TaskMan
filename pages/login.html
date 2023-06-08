@@ -1,40 +1,61 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <link rel="stylesheet" href="css/login.css">
-  </head>
-  <body>
-    <div class="main">
-      <div class="container">
-        <div class="title">
-          <img src="/public/images/logo.png" class="logo" alt="logo"/>
-          <h3>Sign in to TaskMan</h3>
-        </div>
-        <form class="login-form">
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <label class="form-label" for="form2Example1">Email address</label>
-            <input type="email" id="form2Example1" class="form-control" />
-          </div>
+</head>
 
-          <!-- Password input -->
-          <div class="form-outline mb-4">
-            <label class="form-label" for="form2Example2">Password</label>
-            <input type="password" id="form2Example2" class="form-control" placeholder=""/>
-          </div>
-
-          <!-- Submit button -->
-          <button type="button" class="btn btn-primary btn-block mb-4 w-100 bg-success">Sign in</button>
-        </form>
-        <div class="register-link">
-          <a href="">Contact an administrator to create account.</a>
+<body>
+  <div class="main">
+    <div class="container">
+      <div class="title">
+        <img src="/public/images/logo.png" class="logo" alt="logo" />
+        <h3>Sign in to TaskMan</h3>
+      </div>
+      <!-- <div class="error">
+          <span class="close">&times;</span>
+          <div>Incorrect email or password</div>
+        </div> -->
+      <form class="login-form" onsubmit="login()">
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="email">Email address</label>
+          <input type="email" id="email" class="form-control" name="email" required />
         </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="password">Password</label>
+          <input type="password" id="password" class="form-control" name="password" required />
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4 w-100 bg-success">Sign in</button>
+      </form>
+      <div class="register-link">
+        <a href="">Contact an administrator to create account.</a>
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-  </body>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <script src="js/login.js"></script>
+
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      let email = document.getElementById("email")?.value;
+      let password = document.getElementById("password")?.value;
+
+      login(email, password);
+    }
+  </script>
+</body>
 </html>
