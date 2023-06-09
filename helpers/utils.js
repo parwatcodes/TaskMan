@@ -1,11 +1,11 @@
-export function stringify(data) {
+export function stringifyIt(data) {
   return JSON.stringify(data);
 }
 
-export function parse(data) {
+export function parseIt(data) {
   return JSON.parse(data);
 }
 
 export function goto(url) {
-  location.href(url)
+  window.location.href = url;
 }

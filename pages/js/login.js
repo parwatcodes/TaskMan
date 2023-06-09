@@ -1,18 +1,20 @@
-import { getAllUsers, persistUser } from '../../helpers/functions';
-import { goto } from '../../helpers/utils'
+import { goto } from '../../helpers/utils.js';
+import { getAllUsers, persistUser, getAppData } from '../../helpers/api.js';
+import { isAuthenticated } from '../../helpers/validators.js'
 
-export function login(email, password) {
-  let users = getAllUsers();
+ window.login = function(email, password) {
+  let users = getAppData()?.['users'];
 
   let user = users.find(user => user.email === email);
 
+  console.log('uu', user)
 
+  isAuthenticated();
 
   if (user && user.password === password) {
     persistUser(email);
+    goto('/pages/dashboard.html');
 
-    // goto('/')
-    window.location.pathname = '/dashboard';
     return 'Login success.'
   } else if (user && user.password !== password) {
     return 'Password did not match.'

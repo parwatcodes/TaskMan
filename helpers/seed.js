@@ -1,18 +1,28 @@
 // Run when the app loads.
-import { stringify } from './utils';
+import { stringifyIt } from './utils.js';
 
 function seedUser() {
-  const admins = localStorage.getItem("admins");
+  const data = localStorage.getItem("taskMan-data");
 
-  if (!admins?.length) {
+  let users = JSON.parse(data)?.users;
+  let isAdminThere = users?.find(user => user.role === 'admin');
+
+  if (!isAdminThere) {
     let defaultAdmin = {
       "id": 1,
       "name": "Dave Reese",
       "role": "admin",
       "email": "dave.reese@gmail.com",
       "password": "Dave@123"
-    }
+    };
 
-    localStorage.setItem("admins", stringify([defaultAdmin]));
+    let data = {
+      users: [defaultAdmin]
+    };
+
+    console.log('cc')
+    localStorage.setItem("taskMan-data", stringifyIt(data));
   }
 }
+
+seedUser();

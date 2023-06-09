@@ -1,3 +1,10 @@
+import { APP_DATA_KEY } from './constants.js';
+import { stringifyIt, parseIt } from './utils.js';
+
+export function getAppData() {
+  return parseIt(localStorage.getItem(APP_DATA_KEY));
+}
+
 export function getMembers() {
   return localStorage.getItem("users");
 }
