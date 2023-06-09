@@ -1,7 +1,17 @@
 import { goto } from './utils.js';
 
-export function isAuthenticated() {
-  const URI = '/pages/dashboard.html';
+window.isAuthenticated = function () {
 
-  goto(URI);
-}
+  const isAuth = !!localStorage.getItem('isAuthenticated');
+  const isEmail = !!localStorage.getItem('email');
+
+  if (isAuth && isEmail) {
+    const URI = '/pages/dashboard.html';
+
+    goto(URI);
+  } else {
+    const URI = '/pages/login.html';
+
+    goto(URI);
+  }
+};
