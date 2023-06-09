@@ -43,10 +43,10 @@ export function getAllUsers() {
 
 export function persistUser(email) {
   localStorage.setItem('isAuthenticated', true);
-  localStorage.setItem('loggedInUser', email);
+  localStorage.setItem('email', email);
 }
 
 export function logout() {
   localStorage.removeItem('isAuthenticated');
-  localStorage.removeItem('loggedInUser');
+  localStorage.removeItem('email');
 }
