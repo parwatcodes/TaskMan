@@ -51,9 +51,9 @@
   margin-top: 20px;
 }
 
-.error {
+#error {
   position: relative;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   border: 1px solid rgb(206, 202, 202);
@@ -63,7 +63,7 @@
   color: red;
 }
 
-.error .close {
+#error .close {
   position: absolute;
   right: 10px;
   top: 0px;

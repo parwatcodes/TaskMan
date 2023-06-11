@@ -7,5 +7,5 @@ export function parseIt(data) {
 }
 
 export function goto(url) {
-  window.location.href = url;
+  return window.location.href = url;
 }

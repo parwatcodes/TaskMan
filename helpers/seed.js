@@ -1,8 +1,9 @@
 // Run when the app loads.
 import { stringifyIt } from './utils.js';
+import { APP_DATA_KEY } from './constants.js';
 
 function seedUser() {
-  const data = localStorage.getItem("taskMan-data");
+  const data = localStorage.getItem(APP_DATA_KEY);
 
   let users = JSON.parse(data)?.users;
   let isAdminThere = users?.find(user => user.role === 'admin');
@@ -21,7 +22,7 @@ function seedUser() {
     };
 
     console.log('cc')
-    localStorage.setItem("taskMan-data", stringifyIt(data));
+    localStorage.setItem(APP_DATA_KEY, stringifyIt(data));
   }
 }
 

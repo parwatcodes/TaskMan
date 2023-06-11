@@ -8,10 +8,12 @@ window.isAuthenticated = function () {
   if (isAuth && isEmail) {
     const URI = '/pages/dashboard.html';
 
-    goto(URI);
+    return goto(URI);
   } else {
     const URI = '/pages/login.html';
 
-    goto(URI);
+    if (window.location.pathname !== URI) {
+      return goto(URI);
+    }
   }
 };

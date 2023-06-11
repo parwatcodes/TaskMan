@@ -10,18 +10,18 @@
   <link rel="stylesheet" href="css/login.css">
 </head>
 
-<body onload="isAuthenticated();">
+<body>
   <div class="main">
     <div class="container">
       <div class="title">
         <img src="/public/images/logo.png" class="logo" alt="logo" />
         <h3>Sign in to TaskMan</h3>
       </div>
-      <!-- <div class="error">
+      <div id="error">
           <span class="close">&times;</span>
           <div>Incorrect email or password</div>
-        </div> -->
-      <form class="login-form">
+        </div>
+      <form class="login-form" onsubmit="handleSubmit(event)">
         <!-- Email input -->
         <div class="form-outline mb-4">
           <label class="form-label" for="email">Email address</label>
@@ -35,7 +35,7 @@
         </div>
 
         <!-- Submit button -->
-        <button onclick="handleSubmit(event)" type="button" class="btn btn-primary btn-block mb-4 w-100 bg-success">Sign in</button>
+        <button type="submit" class="btn btn-primary btn-block mb-4 w-100 bg-success">Sign in</button>
       </form>
       <div class="register-link">
         <a href="">Contact an administrator to create account.</a>

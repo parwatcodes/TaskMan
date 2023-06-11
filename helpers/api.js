@@ -14,7 +14,9 @@ export function getAdmins() {
 }
 
 export function getAllTask() {
-  return localStorage.getItem("tasks")
+  let appData = getAppData();
+
+  return appData['tasks'];
 }
 
 export function getTaskById(id) {
@@ -49,4 +51,9 @@ export function persistUser(email) {
 export function logout() {
   localStorage.removeItem('isAuthenticated');
   localStorage.removeItem('email');
+}
+
+export function searchTask() {
+  let tasks = getAllTask();
+
 }
