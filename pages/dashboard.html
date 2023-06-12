@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/dashboard.css">
   <link rel="stylesheet" href="css/task.css">
 </head>
+
 <body>
   <div>
     <div class="mainHeader">
@@ -108,14 +109,32 @@
         <span onclick="onClose(event)" class="close">&times;</span>
         <div class="title">
           <i class="bi bi-briefcase " style="font-size: 25px;">&nbsp;&nbsp;</i>
-          <input type="text" placeholder="Task name" />
+          <input onchange="onChangeForTask(event)" id="taskName" type="text" placeholder="Task name" />
         </div>
-        <div class="list"><span id="listType">ToDo</span></div>
+        <div style="display: flex; align-items: center;">
+          <span class="list" id="listType">ToDo</span>
+          <div style="display: none;">
+            <span>Start Date:</span>
+            <span>Due Date:</span>
+          </div>
+        </div>
         <div class="content">
           <div style="margin-left: 40px;">
             <div id="descp">Description</div>
-            <textarea placeholder="Add a more detailed description"></textarea>
+            <textarea onchange="onChangeForTask(event)" id="taskDescription"
+              placeholder="Add a more detailed description"></textarea>
           </div>
+
+          <!-- list members -->
+          <div id="members">
+          </div>
+
+          <!-- list labels -->
+          <div id="labels">
+
+          </div>
+
+
 
           <div class="action cur">
             <div><i class="bi bi-person">&nbsp;</i>Members</div>
@@ -308,6 +327,7 @@
   <script type="module" src="../helpers/validators.js"></script>
   <script type="module" src="./js/dashboard.js"></script>
   <script type="module" src="./js/globals.js"></script>
+  <script type="module" src="./js/task.js"></script>
   <script>
 
     //Modal popup handling functions.
@@ -352,12 +372,45 @@
         addUserModal.style.display = 'none';
       }
     };
+
+    function showNodeForAction(event) {
+      let id = event.target.id;
+
+      if (id === 'member') {
+        let memberEle = document.getElementById("memberNode");
+      }
+
+      if (id === 'label') {
+        let labelEle = document.getElementById("labelNode");
+
+      }
+
+      if (id === 'startDate') {
+        let startDateEle = document.getElementById("startDateNode");
+      }
+
+      if (id === 'endDate') {
+        let endDateEle = document.getElementById("endDateNode");
+      }
+
+      if (id === 'move') {
+        let moveEle = document.getElementById("moveNode");
+      }
+    }
     // End of modal handling functions.
 
     //Modal operation(i.e: Add/Edit) handling functions
     var tasks = [];
     var selectedListType;
     var initialTask = {};
+
+    function onChangeForTask(event) {
+      let key = event.target.id;
+      let value = event.target.value;
+
+      initialTask[key] = value;
+      // handleOnChangeForTask(event);
+    }
 
   </script>
 
