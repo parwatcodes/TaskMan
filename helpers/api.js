@@ -43,16 +43,6 @@ export function getAllUsers() {
   return [...members, ...admins];
 }
 
-export function persistUser(email) {
-  localStorage.setItem('isAuthenticated', true);
-  localStorage.setItem('email', email);
-}
-
-export function logout() {
-  localStorage.removeItem('isAuthenticated');
-  localStorage.removeItem('email');
-}
-
 export function searchTask() {
   let tasks = getAllTask();
 

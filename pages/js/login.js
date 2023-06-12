@@ -1,5 +1,5 @@
-import { goto } from '../../helpers/utils.js';
-import { getAllUsers, persistUser, getAppData } from '../../helpers/api.js';
+import { goto, persistUser } from '../../helpers/utils.js';
+import { getAllUsers, getAppData } from '../../helpers/api.js';
 
  window.login = function(email, password) {
   let users = getAppData()?.['users'];
@@ -18,6 +18,7 @@ import { getAllUsers, persistUser, getAppData } from '../../helpers/api.js';
 
 function showErrorMessage(msg) {
   let errorEle = document.getElementById("error");
+
   errorEle.style.display = 'flex';
   errorEle.innerHTML = msg;
 }

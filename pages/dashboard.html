@@ -19,8 +19,9 @@
       <div class="menu">
         <div><i class="bi bi-safe"></i>&nbsp;Backlog</div>
         <div><i class="bi bi-card-heading"></i>&nbsp;Change Board Mode</div>
-        <div><i class="bi bi-plus"></i>&nbsp;New User</div>
+        <div onclick="goto('/pages/create-user.html')"><i class="bi bi-plus"></i>&nbsp;New User</div>
         <div><i class="bi bi-person-circle"></i>&nbsp;Profile</div>
+        <div onclick="logout()"><i class="bi bi-box-arrow-right"></i>&nbsp;Logout</div>
       </div>
     </div>
 
@@ -38,34 +39,35 @@
     </div>
   </div>
 
-
-  <!-- TASK -->
-  <div class="taskMainContent">
-    <span class="close">&times;</span>
-    <div class="title">
-      <i class="bi bi-briefcase " style="font-size: 25px;">&nbsp;&nbsp;</i>
-      <input type="text" placeholder="Task name..."/>
-    </div>
-    <div class="list">in list: ToDo</div>
-    <div class="content">
-      <div style="margin-left: 40px;">
-        <div id="descp">Description</div>
-        <textarea placeholder="Add a more detailed description..."></textarea>
-      </div>
-
-      <div class="action cur">
-        <div><i class="bi bi-person">&nbsp;</i>Members</div>
-        <div><i class="bi bi-tag">&nbsp;</i>Label</div>
-        <div><i class="bi bi-calendar"></i>&nbsp;</i>Start Date</div>
-        <div><i class="bi bi-calendar-check"></i>&nbsp;</i>End Date</div>
-        <div><i class="bi bi-arrow-right">&nbsp;</i>Move</div>
-      </div>
-    </div>
-  </div>
-
-
-
   <div class="main">
+
+    <!-- TASK -->
+    <div id="taskModal" class="modal">
+      <div class="taskMainContent">
+        <span onclick="onClose(event)" class="close">&times;</span>
+        <div class="title">
+          <i class="bi bi-briefcase " style="font-size: 25px;">&nbsp;&nbsp;</i>
+          <input type="text" placeholder="Task name..." />
+        </div>
+        <div class="list">in list: ToDo</div>
+        <div class="content">
+          <div style="margin-left: 40px;">
+            <div id="descp">Description</div>
+            <textarea placeholder="Add a more detailed description..."></textarea>
+          </div>
+
+          <div class="action cur">
+            <div><i class="bi bi-person">&nbsp;</i>Members</div>
+            <div><i class="bi bi-tag">&nbsp;</i>Label</div>
+            <div><i class="bi bi-calendar"></i>&nbsp;</i>Start Date</div>
+            <div><i class="bi bi-calendar-check"></i>&nbsp;</i>End Date</div>
+            <div><i class="bi bi-arrow-right">&nbsp;</i>Move</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <div class="searchContainer">
       <i class="bi bi-search"></i><input class="search-bar" type="text" placeholder="Search Items" />
     </div>
@@ -78,7 +80,7 @@
             <span>3</span>
           </div>
           <div class="actions">
-            <div><i class="bi bi-plus"></i></div>
+            <div id="addTaskBtn" onclick="toggleTaskModal()"><i class="bi bi-plus"></i></div>
             <!-- <div><i class="bi bi-three-dots"></i></div> -->
           </div>
         </div>
@@ -214,6 +216,29 @@
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"></script>
   <script type="module" src="../helpers/validators.js"></script>
+  <script type="module" src="./js/dashboard.js"></script>
+  <script>
+    // Task modal handling functions.
+    function onClose(event) {
+      var taskModal = document.getElementById("taskModal");
+
+      taskModal.style.display = 'none';
+    }
+
+    function toggleTaskModal() {
+      var taskModal = document.getElementById("taskModal");
+
+      taskModal.style.display = 'block'
+    }
+
+    window.onclick = function(event) {
+      var taskModal = document.getElementById("taskModal");
+
+      if (event.target == taskModal) {
+        taskModal.style.display = 'none';
+      }
+    }
+  </script>
 
 </body>
 
