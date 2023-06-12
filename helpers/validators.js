@@ -2,8 +2,8 @@ import { goto } from './utils.js';
 
 window.isAuthenticated = function () {
 
-  const isAuth = !!localStorage.getItem('isAuthenticated');
   const isEmail = !!localStorage.getItem('email');
+  const isAuth = !!localStorage.getItem('isAuthenticated');
 
   if (isAuth && isEmail) {
     const URI = '/pages/dashboard.html';

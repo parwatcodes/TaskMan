@@ -1,27 +1,17 @@
 // Run when the app loads.
-import { stringifyIt } from './utils.js';
-import { APP_DATA_KEY } from './constants.js';
+import { getAppData } from './api.js';
+import { stringifyIt, parseIt } from './utils.js';
+import { APP_DATA_KEY, DEFAULT_ADMIN, ADMIN } from './constants.js';
 
 function seedUser() {
-  const data = localStorage.getItem(APP_DATA_KEY);
-
-  let users = JSON.parse(data)?.users;
-  let isAdminThere = users?.find(user => user.role === 'admin');
+  let users = getAppData()?.users;
+  let isAdminThere = users?.find(user => user.role === ADMIN);
 
   if (!isAdminThere) {
-    let defaultAdmin = {
-      "id": 1,
-      "name": "Dave Reese",
-      "role": "admin",
-      "email": "dave.reese@gmail.com",
-      "password": "Dave@123"
-    };
-
     let data = {
-      users: [defaultAdmin]
+      users: [DEFAULT_ADMIN]
     };
 
-    console.log('cc')
     localStorage.setItem(APP_DATA_KEY, stringifyIt(data));
   }
 }
