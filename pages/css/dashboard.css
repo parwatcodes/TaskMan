@@ -12,7 +12,7 @@ body {
 }
 
 .containerWrapper {
-  width: auto;
+  /* width: 290px; */
   background-color: #E6ECF0;
   border-radius: 5px 5px 0px 0px;
   padding: 20px;
@@ -34,12 +34,20 @@ body {
   border-radius: 5px;
   padding: 5px 10px;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .task-footer {
-  font-size: 13px;
+  font-size: 12px;
   float: right;
+}
+
+.task-footer i:not(:last-child) {
+  margin-right: 10px;
+}
+
+.task-footer i:last-child {
+  font-style: normal;
 }
 
 .mainHeader {
@@ -93,7 +101,6 @@ body {
   padding: 1px 10px;
   font-size: 12px;
   border-radius: 5px;
-  text-shadow: 0.5px 0.5px #ff0000;
 }
 
 .searchContainer {
@@ -115,24 +122,24 @@ body {
 }
 
 .searchContainer .search-bar::placeholder {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .card-title {
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .card-text {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .cardType {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 700;
   margin-bottom: 10px;
 }
 
@@ -141,7 +148,7 @@ body {
 }
 
 .cardType .actions div {
-  padding: 5px 10px;
+  padding: 5px 9px;
   border-radius: 20px;
   background-color: #D5D5D5;
 }
@@ -158,9 +165,9 @@ body {
 
 .mainContainer2 {
   background-color: #eff0f3;
-    border-radius: 5px 5px 0px 0px;
-    padding: 40px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  border-radius: 5px 5px 0px 0px;
+  padding: 40px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .containerWrapper2 {
