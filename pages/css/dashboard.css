@@ -8,6 +8,7 @@ body {
   width: 90%;
   margin: auto;
   position: relative;
+  min-height: 900px;
 }
 
 .containerWrapper {
@@ -33,12 +34,18 @@ body {
   border-radius: 5px;
   padding: 5px 10px;
   font-weight: 500;
+  font-size: 12px;
+}
+
+.task-footer {
+  font-size: 13px;
+  float: right;
 }
 
 .mainHeader {
   display: flex;
   justify-content: center;
-  height: 70px;
+  height: 55px;
   color: #FFFFFF;
   background-color: #212cb5;
 }
@@ -47,7 +54,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .mainHeader .menu div {
@@ -58,12 +65,13 @@ body {
 .mainHeader .menu div:hover {
   color: yellow;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  text-shadow: 0.5px 0.5px #FF0000;
 }
 
 .subBar {
   display: flex;
   align-items: center;
-  height: 70px;
+  height: 55px;
   background-color: #E6ECF0;
 }
 
@@ -74,7 +82,7 @@ body {
   margin: auto;
 }
 
-.subBar .title h5 {
+.subBar .title h6 {
   margin-bottom: 0px;
 }
 
@@ -82,8 +90,10 @@ body {
   margin-left: 10px;
   background-color: blue;
   color: white;
-  padding: 1px 12px;
+  padding: 1px 10px;
+  font-size: 12px;
   border-radius: 5px;
+  text-shadow: 0.5px 0.5px #ff0000;
 }
 
 .searchContainer {
@@ -97,24 +107,33 @@ body {
 }
 
 .searchContainer .search-bar {
-  width: 318px;
-  height: 40px;
+  width: 265px;
+  height: 30px;
   margin-left: 5px;
   border: 0;
   outline: none;
 }
 
+.searchContainer .search-bar::placeholder {
+  font-size: 14px;
+}
+
 .card-title {
-  font-size: 16px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.card-text {
+  font-size: 13px;
 }
 
 .cardType {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .cardType .actions {

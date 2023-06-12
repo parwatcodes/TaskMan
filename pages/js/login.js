@@ -1,5 +1,5 @@
 import { goto, persistUser } from '../../helpers/utils.js';
-import { getAllUsers, getAppData } from '../../helpers/api.js';
+import { getAppData } from '../../helpers/api.js';
 
  window.login = function(email, password) {
   let users = getAppData()?.['users'];

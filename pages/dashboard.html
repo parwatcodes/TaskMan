@@ -27,7 +27,7 @@
 
     <div class="subBar">
       <div class="title">
-        <h5>Task Management</h5><span>v 0.1</span>
+        <h6>Task Management</h6><span>v 0.1</span>
       </div>
 
       <!-- <div>
@@ -158,7 +158,7 @@
       <i class="bi bi-search"></i><input class="search-bar" type="text" placeholder="Search Items" />
     </div>
 
-    <div style="display: flex">
+    <div style="display: flex; overflow: auto; min-height:700px;">
       <div class="containerWrapper">
         <div class="cardType">
           <div>
@@ -171,7 +171,7 @@
           </div>
         </div>
 
-        <div onclick="toggleTaskModal('edit')" class="card" style="width: 20rem;">
+        <div onclick="toggleTaskModal('edit')" class="card">
           <div class="card-body">
             <h5 class="card-title">Mobile wireframes</h5>
             <!-- <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> -->
@@ -182,12 +182,14 @@
             <hr />
             <!-- <a href="#" class="card-link">Card link</a>
             <a href="#" class="card-link">Another link</a> -->
-            <i class="bi bi-flag-fill"></i>
-            <i class="bi bi-clock-fill h5"></i> <span>June 20</span>
+              <div class="task-footer">
+                <i class="bi bi-flag-fill"></i>
+                <i class="bi bi-clock-fill"></i> <span>June 20</span>
+              </div>
           </div>
         </div>
 
-        <div class="card" style="width: 20rem;">
+        <div class="card">
           <div class="card-body">
             <h5 class="card-title">User Research</h5>
             <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
@@ -206,7 +208,7 @@
 
         <div class="cardType">In Progress</div>
 
-        <div class="card" style="width: 20rem;">
+        <div class="card">
           <div class="card-body">
             <h5 class="card-title">Login Flow</h5>
             <!-- <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> -->
@@ -218,7 +220,7 @@
           </div>
         </div>
 
-        <div class="card" style="width: 20rem;">
+        <div class="card">
           <div class="card-body">
             <h5 class="card-title">Forgot password screen</h5>
             <!-- <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> -->
@@ -237,7 +239,7 @@
 
         <div class="cardType">In Review</div>
 
-        <div class="card" style="width: 20rem;">
+        <div class="card">
           <div class="card-body">
             <h5 class="card-title">Login Flow</h5>
             <!-- <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> -->
@@ -249,7 +251,7 @@
           </div>
         </div>
 
-        <div class="card" style="width: 20rem;">
+        <div class="card">
           <div class="card-body">
             <h5 class="card-title">Forgot password screen</h5>
             <!-- <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> -->
@@ -268,7 +270,7 @@
 
         <div class="cardType">Done</div>
 
-        <div class="card" style="width: 20rem;">
+        <div class="card">
           <div class="card-body">
             <h5 class="card-title">Login Flow</h5>
             <!-- <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> -->
@@ -280,7 +282,7 @@
           </div>
         </div>
 
-        <div class="card" style="width: 20rem;">
+        <div class="card">
           <div class="card-body">
             <h5 class="card-title">Forgot password screen</h5>
             <!-- <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> -->
@@ -335,9 +337,14 @@
 
     window.onclick = function (event) {
       var taskModal = document.getElementById("taskModal");
+      var addUserModal = document.getElementById('userModal');
 
       if (event.target == taskModal) {
         taskModal.style.display = 'none';
+      }
+
+      if (event.target === addUserModal) {
+        addUserModal.style.display = 'none';
       }
     };
 
