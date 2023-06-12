@@ -112,3 +112,47 @@
 #addTaskBtn:hover {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
+.modal1 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.userModalContent {
+  font-size: 17px;
+  position: absolute;
+  width: 25%;
+  margin: auto;
+  padding: 30px 70px;
+  background-color: rgb(237, 239, 241);
+  border-radius: 10px;
+  z-index: 1;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%,-50%);
+}
+
+.addUserTitle {
+  text-align: center;
+  margin-bottom: 30px;
+
+}
+
+.logo {
+  height: 50px;
+  width: 60px;
+  margin-bottom: 15px;
+}
+
+.mainProfile {
+  display: none;
+}

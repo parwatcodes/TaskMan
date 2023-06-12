@@ -1,0 +1,26 @@
+.mainProfile {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  position: relative;
+}
+
+.sideProfile {
+  padding: 20px;
+  width: 20%;
+  border: 1px solid;
+}
+
+.tasks {
+  padding: 20px;
+  width: 100%;
+  border: 1px solid;
+}
+
+.affr {
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: 100px;
+}

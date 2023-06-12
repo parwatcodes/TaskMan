@@ -17,9 +17,9 @@
   <div>
     <div class="mainHeader">
       <div class="menu">
+        <div onclick="('/pages/profile.html')"><i class="bi bi-card-heading"></i>&nbsp;DashBoard</div>
         <div><i class="bi bi-safe"></i>&nbsp;Backlog</div>
-        <div><i class="bi bi-card-heading"></i>&nbsp;Change Board Mode</div>
-        <div onclick="goto('/pages/create-user.html')"><i class="bi bi-plus"></i>&nbsp;New User</div>
+        <div onclick="openAddUserModal()"><i class="bi bi-plus"></i>&nbsp;New User</div>
         <div><i class="bi bi-person-circle"></i>&nbsp;Profile</div>
         <div onclick="logout()"><i class="bi bi-box-arrow-right"></i>&nbsp;Logout</div>
       </div>
@@ -41,7 +41,56 @@
 
   <div class="main">
 
-    <!-- TASK -->
+    <!-- ADD USER MODAL -->
+    <div class="modal1" id="userModal">
+      <div class="userModalContent">
+        <span id="closeUserModal" onclick="onClose(event)" class="close">&times;</span>
+        <div class="addUserTitle">
+          <img src="/public/images/logo.png" class="logo" alt="logo">
+          <h3>Add a new user</h3>
+        </div>
+        <form class="login-form">
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example1">Email address</label>
+            <input type="email" id="form2Example1" class="form-control">
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example2">Password</label>
+            <input type="password" id="form2Example2" class="form-control" placeholder="">
+          </div>
+
+          <!-- Verify password input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example2">Confirm password</label>
+            <input type="password" id="form2Example2" class="form-control" placeholder="">
+          </div>
+
+          <!-- Role input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example2">User role</label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected="">Select a user role</option>
+              <option value="admin">Administrator</option>
+              <option value="member">Member</option>
+            </select>
+          </div>
+
+          <!-- If role input is member add this hourly rate field-->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example2">Hourly Rate for </label>
+            <input type="rate" id="form2Example2" class="form-control" placeholder="">
+          </div>
+
+          <!-- Submit button -->
+          <button type="button" class="btn btn-primary btn-block mb-4 w-100 bg-success">Add user</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ADD/EDIT TASK MODAL -->
     <div id="taskModal" class="modal">
       <div class="taskMainContent">
         <span onclick="onClose(event)" class="close">&times;</span>
@@ -67,6 +116,43 @@
       </div>
     </div>
 
+    <!-- USER PROFILE MODAL -->
+    <div class="mainProfile">
+
+      <div class="sideProfile">
+        <div class="affr">
+          <div>PK</div>
+        </div>
+        <div>Parwat Kunwar (<span>Admin</span>)</div>
+        <div>parwatkunwar08@gmail.com</div>
+      </div>
+
+      <div class="tasks">
+        <div>Task</div>
+        <div>
+          <div>
+            <div>
+              <div>Task name</div>
+              <div>this is a task description</div>
+            </div>
+            <div>
+              <div>Task name</div>
+              <div>this is a task description</div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <div>Task name</div>
+              <div>this is a task description</div>
+            </div>
+            <div>
+              <div>Task name</div>
+              <div>this is a task description</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="searchContainer">
       <i class="bi bi-search"></i><input class="search-bar" type="text" placeholder="Search Items" />
@@ -80,12 +166,12 @@
             <span>3</span>
           </div>
           <div class="actions">
-            <div id="addTaskBtn" onclick="toggleTaskModal()"><i class="bi bi-plus"></i></div>
+            <div id="addTaskBtn" onclick="toggleTaskModal('add')"><i class="bi bi-plus"></i></div>
             <!-- <div><i class="bi bi-three-dots"></i></div> -->
           </div>
         </div>
 
-        <div class="card" style="width: 20rem;">
+        <div onclick="toggleTaskModal('edit')" class="card" style="width: 20rem;">
           <div class="card-body">
             <h5 class="card-title">Mobile wireframes</h5>
             <!-- <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> -->
@@ -217,27 +303,43 @@
     crossorigin="anonymous"></script>
   <script type="module" src="../helpers/validators.js"></script>
   <script type="module" src="./js/dashboard.js"></script>
+  <script type="module" src="./js/globals.js"></script>
   <script>
-    // Task modal handling functions.
+
+    //Modal handling functions.
     function onClose(event) {
-      var taskModal = document.getElementById("taskModal");
+      var id = event.target.id;
 
+      if (id === 'closeUserModal') {
+        var addUserModal = document.getElementById("userModal");
+
+        return addUserModal.style.display = 'none';
+      }
+
+      var taskModal = document.getElementById("taskModal");
       taskModal.style.display = 'none';
+
     }
 
-    function toggleTaskModal() {
+    function openAddUserModal() {
+      var addUserModal = document.getElementById('userModal');
+
+      addUserModal.style.display = 'block';
+    }
+
+    function toggleTaskModal(type) {
       var taskModal = document.getElementById("taskModal");
 
-      taskModal.style.display = 'block'
+      taskModal.style.display = 'block';
     }
 
-    window.onclick = function(event) {
+    window.onclick = function (event) {
       var taskModal = document.getElementById("taskModal");
 
       if (event.target == taskModal) {
         taskModal.style.display = 'none';
       }
-    }
+    };
 
     var tasks = [];
     var listTypeForTask;

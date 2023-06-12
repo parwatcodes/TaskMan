@@ -16,6 +16,8 @@ import { getAllUsers, getAppData } from '../../helpers/api.js';
   }
 }
 
+// Display error message in login page.
+
 function showErrorMessage(msg) {
   let errorEle = document.getElementById("error");
 
