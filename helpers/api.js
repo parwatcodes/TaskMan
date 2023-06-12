@@ -1,16 +1,23 @@
-import { APP_DATA_KEY } from './constants.js';
 import { stringifyIt, parseIt } from './utils.js';
+import { APP_DATA_KEY, ADMIN, MEMBER } from './constants.js';
 
 export function getAppData() {
   return parseIt(localStorage.getItem(APP_DATA_KEY));
 }
 
+export function getUserByRole(role) {
+  let appData = getAppData();
+  let users = appData?.users?.filter(user => user.role === role);
+
+  return users;
+}
+
 export function getMembers() {
-  return localStorage.getItem("users");
+  return getUserByRole(MEMBER);
 }
 
 export function getAdmins() {
-  return localStorage.getItem("admins")
+  return getUserByRole(ADMIN);
 }
 
 export function getAllTask() {
@@ -34,13 +41,6 @@ export function findUserByEmail(email) {
   let users = getAllUsers();
 
   return users.find(user => user.email === email);
-}
-
-export function getAllUsers() {
-  let members = getMembers();
-  let admins = getAdmins();
-
-  return [...members, ...admins];
 }
 
 export function searchTask() {

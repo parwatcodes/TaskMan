@@ -47,13 +47,13 @@
         <span onclick="onClose(event)" class="close">&times;</span>
         <div class="title">
           <i class="bi bi-briefcase " style="font-size: 25px;">&nbsp;&nbsp;</i>
-          <input type="text" placeholder="Task name..." />
+          <input type="text" placeholder="Task name" />
         </div>
         <div class="list">in list: ToDo</div>
         <div class="content">
           <div style="margin-left: 40px;">
             <div id="descp">Description</div>
-            <textarea placeholder="Add a more detailed description..."></textarea>
+            <textarea placeholder="Add a more detailed description"></textarea>
           </div>
 
           <div class="action cur">
@@ -238,6 +238,11 @@
         taskModal.style.display = 'none';
       }
     }
+
+    var tasks = [];
+    var listTypeForTask;
+    var initialTask = {};
+
   </script>
 
 </body>
