@@ -1,19 +1,17 @@
 import { goto } from './utils.js';
+import { URI_DASHBOARD, URI_LOGIN } from './constants.js';
 
 window.isAuthenticated = function () {
-
   const isEmail = !!localStorage.getItem('email');
   const isAuth = !!localStorage.getItem('isAuthenticated');
 
   if (isAuth && isEmail) {
-    const URI = '/pages/dashboard.html';
 
-    return goto(URI);
+    return goto(URI_DASHBOARD);
   } else {
-    const URI = '/pages/login.html';
-
     if (window.location.pathname !== URI) {
-      return goto(URI);
+
+      return goto(URI_LOGIN);
     }
   }
 };
