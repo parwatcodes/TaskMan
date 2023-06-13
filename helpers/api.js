@@ -38,12 +38,13 @@ export function updateTask(id, data) {
 }
 
 export function findUserByEmail(email) {
-  let users = getAllUsers();
+  let users = getAppData()?.['users'];
+  let user = users.find(user => user.email === email);
 
-  return users.find(user => user.email === email);
+  return user;
 }
 
-export function searchTask() {
+export function searchTask(searchString) {
   let tasks = getAllTask();
 
 }
