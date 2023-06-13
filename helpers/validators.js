@@ -1,7 +1,7 @@
 import { goto } from './utils.js';
 import { URI_DASHBOARD, URI_LOGIN } from './constants.js';
 
-window.isAuthenticated = function () {
+export function isAuthenticated() {
   const isEmail = !!localStorage.getItem('email');
   const isAuth = !!localStorage.getItem('isAuthenticated');
 

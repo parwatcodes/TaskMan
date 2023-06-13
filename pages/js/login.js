@@ -1,7 +1,7 @@
-import { goto, persistUser } from '../../helpers/utils.js';
 import { getAppData } from '../../helpers/api.js';
+import { goto, persistUser } from '../../helpers/utils.js';
 
- window.login = function(email, password) {
+export function login(email, password) {
   let users = getAppData()?.['users'];
   let user = users.find(user => user.email === email);
 
@@ -17,7 +17,6 @@ import { getAppData } from '../../helpers/api.js';
 }
 
 // Display error message in login page.
-
 function showErrorMessage(msg) {
   let errorEle = document.getElementById("error");
 
