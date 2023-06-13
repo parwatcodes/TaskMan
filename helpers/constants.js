@@ -6,18 +6,20 @@ export const URI_LOGIN = '/pages/login.html';
 export const URI_DASHBOARD = '/pages/dashboard.html';
 export const DEFAULT_ADMIN = {
   "id": 1,
-  "name": "Default Admin",
   "role": ADMIN,
+  "createdTask": [],
+  "name": "Default Admin",
   "email": "admin123@gmail.com",
   "password": "Admin@123"
 };
 export const DEFAULT_MEMBER = {
   "id": 2,
-  "name": "Default Member",
   "role": MEMBER,
-  "email": "member123@gmail.com",
+  "ratePerHr": 45,
+  "assignedTask": [],
   "password": "Member@123",
-  "ratePerHr": 45
+  "name": "Default Member",
+  "email": "member123@gmail.com"
 };
 export const LIST = {
   TODO: 'ToDo',
