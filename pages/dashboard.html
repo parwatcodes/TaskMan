@@ -16,7 +16,7 @@
   <div>
     <div class="mainHeader">
       <div class="menu">
-        <div onclick="('/pages/profile.html')"><i class="bi bi-card-heading"></i>&nbsp;DashBoard</div>
+        <div onclick="goto('/pages/dashboard.html')"><i class="bi bi-card-heading"></i>&nbsp;DashBoard</div>
         <div><i class="bi bi-safe"></i>&nbsp;Backlog</div>
         <div onclick="openAddUserModal()"><i class="bi bi-plus"></i>&nbsp;New User</div>
         <div><i class="bi bi-person-circle"></i>&nbsp;Profile</div>
@@ -46,7 +46,7 @@
         <span id="closeUserModal" onclick="onClose(event)" class="close">&times;</span>
         <div class="addUserTitle">
           <img src="/public/images/logo.png" class="logo" alt="logo">
-          <h3>Add a new user</h3>
+          <h5 style="font-weight: normal;">Add a new user</h5>
         </div>
         <form class="login-form">
           <div class="login-row">
@@ -126,22 +126,36 @@
           </div>
 
           <!-- list members -->
-          <div id="members">
+          <div id="memberNode">
+
           </div>
 
           <!-- list labels -->
-          <div id="labels">
+          <div id="labelNode">
 
           </div>
 
+          <!-- list startDate -->
+          <div id="startDateNode">
 
+          </div>
+
+          <!-- list endDate -->
+          <div id="endDateNode">
+
+          </div>
+
+          <!-- list move -->
+          <div id="moveNode">
+
+          </div>
 
           <div class="action cur">
-            <div><i class="bi bi-person">&nbsp;</i>Members</div>
-            <div><i class="bi bi-tag">&nbsp;</i>Label</div>
-            <div><i class="bi bi-calendar"></i>&nbsp;</i>Start Date</div>
-            <div><i class="bi bi-calendar-check"></i>&nbsp;</i>End Date</div>
-            <div><i class="bi bi-arrow-right">&nbsp;</i>Move</div>
+            <div onclick="showNodeForAction(event)"><i class="bi bi-person">&nbsp;</i>Members</div>
+            <div onclick="showNodeForAction(event)"><i class="bi bi-tag">&nbsp;</i>Label</div>
+            <div onclick="showNodeForAction(event)"><i class="bi bi-calendar"></i>&nbsp;</i>Start Date</div>
+            <div onclick="showNodeForAction(event)"><i class="bi bi-calendar-check"></i>&nbsp;</i>End Date</div>
+            <div onclick="showNodeForAction(event)"><i class="bi bi-arrow-right">&nbsp;</i>Move</div>
           </div>
         </div>
       </div>
@@ -358,6 +372,18 @@
       taskModal.style.display = 'block';
       listTypeEle.innerHTML = listType;
       selectedListType = listType;
+
+      let members = getMembers();
+
+      if (members?.length) {
+        let memberEle = document.getElementById('memberNode');
+
+        members.forEach(member => {
+          let html = `<div style="background-color: red; height: 200px;">${member.email}</div>`;
+
+          memberEle.insertAdjacentHTML("afterend", html);
+        });
+      }
     }
 
     window.onclick = function (event) {
@@ -411,7 +437,6 @@
       initialTask[key] = value;
       // handleOnChangeForTask(event);
     }
-
   </script>
 
 </body>
