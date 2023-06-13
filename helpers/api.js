@@ -44,7 +44,12 @@ export function findUserByEmail(email) {
   return user;
 }
 
-export function searchTask(searchString) {
+export function searchTask(searchTerm) {
   let tasks = getAllTask();
 
+  const filteredTasks = tasks.filter(task => {
+    task.name?.toLowerCase()?.includes(searchTerm.toLowerCase().trim());
+  });
+
+  return filteredTasks;
 }
