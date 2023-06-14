@@ -53,3 +53,16 @@ export function searchTask(searchTerm) {
 
   return filteredTasks;
 }
+
+export function currentUserRole() {
+  let email = localStorage.getItem('email');
+  let user = findUserByEmail(email);
+
+  return user.role;
+}
+
+export function isAdmin() {
+  let role = currentUserRole();
+
+  return role === 'admin';
+}
