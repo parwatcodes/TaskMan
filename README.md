@@ -1,2 +1,2 @@
 # Task Management
-A task management web app based upon vanilla javascript
+A task management web app
