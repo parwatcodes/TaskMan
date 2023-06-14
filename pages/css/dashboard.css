@@ -190,5 +190,21 @@ body {
 #listContainer {
   display: flex;
   overflow: auto;
-  min-height:700px;
+  min-height: 700px;
+}
+
+.autoGenPassword {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.autoGenPassword .clip-board {
+  position: absolute;
+  right: 0;
+  margin-right: 5px;
+  margin-bottom: 0px;
+  color: gray;
+  cursor: pointer;
+  visibility: hidden;
 }
