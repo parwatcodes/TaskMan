@@ -122,10 +122,10 @@
 
             <div class="divWrapper">
               <i class="bi bi-person"></i>
-              <select class="selectpicker" aria-label="Default select example">
+              <select id='member-select' class="selectpicker" aria-label="Default select example">
                 <option selected disabled>Members</option>
-                <option value="admin">Administrator</option>
-                <option value="member">Member</option>
+                <!-- <option value="admin">Administrator</option>
+                <option value="member">Member</option> -->
               </select>
             </div>
 
@@ -418,6 +418,7 @@
 
     }
 
+    // Modal to add new user.
     function openAddUserModal() {
       var addUserModal = document.getElementById('userModal');
 
@@ -442,9 +443,12 @@
       selectedListType = listType;
 
       let members = getMembers();
-
       if (members?.length) {
+        let selectEle = document.getElementById('member-select');
 
+        members.forEach(member => {
+          selectEle.add(new Option(member.email))
+        })
       }
     }
 
