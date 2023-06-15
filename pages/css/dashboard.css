@@ -208,3 +208,7 @@ body {
   cursor: pointer;
   visibility: hidden;
 }
+
+#backlog, #newUser {
+  display: none;
+}

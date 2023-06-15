@@ -199,7 +199,8 @@
   width: 45%;
 }
 
-.selectpicker {
+.selectpicker,
+.selectpicker1 {
   font-size: 14px !important;
   padding: 8px;
   cursor: pointer;
@@ -209,21 +210,36 @@
   color: green;
 }
 
+.dateWrapper {
+  font-size: 12px;
+  padding: 6px 0;
+}
+
+.dateWrapper label {
+  padding: 6px 2px;
+}
+
+.dateWrapper:hover, .divWrapper:hover {
+    color: green;
+}
 
 #start,
 #end {
-  font-size: 10px;
+  font-size: 12px;
   border: none;
   padding: 6px 0px;
   background-color: transparent;
   outline: none;
+  text-indent: -99999999px;
+  position: absolute;
+
 }
 
-input.picker[type="date"] {
+input.picker[type="datetime-local"] {
   position: relative;
 }
 
-input.picker[type="date"]::-webkit-calendar-picker-indicator {
+input.picker[type="datetime-local"]::-webkit-calendar-picker-indicator {
   position: absolute;
   top: 0;
   right: 0;
@@ -235,6 +251,6 @@ input.picker[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
-input.picker[type="date"]:hover {
+input.picker[type="datetime-local"]:hover {
   color: green;
 }

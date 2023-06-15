@@ -12,13 +12,13 @@
   <link rel="stylesheet" href="css/task.css">
 </head>
 
-<body>
+<body onload="onPageLoad();">
   <div>
     <div class="mainHeader">
       <div class="menu">
         <div onclick="goto('/pages/dashboard.html')"><i class="bi bi-card-heading"></i>&nbsp;DashBoard</div>
-        <div><i class="bi bi-safe"></i>&nbsp;Backlog</div>
-        <div onclick="openAddUserModal()"><i class="bi bi-plus"></i>&nbsp;New User</div>
+        <div id="backlog"><i class="bi bi-safe"></i>&nbsp;Backlog</div>
+        <div id="newUser" onclick="openAddUserModal()"><i class="bi bi-plus"></i>&nbsp;New User</div>
         <div><i class="bi bi-person-circle"></i>&nbsp;Profile</div>
         <div onclick="logout()"><i class="bi bi-box-arrow-right"></i>&nbsp;Logout</div>
       </div>
@@ -73,9 +73,9 @@
             <!-- Role input -->
             <div id="user-role" class="form-outline mb-4">
               <label class="form-label" for="form2Example2">User role</label>
-              <select id="userRoleSelect" class="form-select selectpicker" aria-label="Default select example"
+              <select required id="userRoleSelect" class="form-select selectpicker1" aria-label="Default select example"
                 onchange="handleUserRoleSelect(event)">
-                <option selected disabled>Select a user role</option>
+                <option disabled>Select a user role</option>
                 <option value="admin">Administrator</option>
                 <option value="member">Member</option>
               </select>
@@ -119,9 +119,8 @@
           </div>
 
           <div class="action cur">
-            <!-- <div onclick="showNodeForAction(event)"><i class="bi bi-person">&nbsp;</i> -->
 
-            <div>
+            <div class="divWrapper">
               <i class="bi bi-person"></i>
               <select class="selectpicker" aria-label="Default select example">
                 <option selected disabled>Members</option>
@@ -129,8 +128,8 @@
                 <option value="member">Member</option>
               </select>
             </div>
-            <!-- <div onclick="showNodeForAction(event)"><i class="bi bi-tag">&nbsp;</i>Label</div> -->
-            <div>
+
+            <div class="divWrapper">
               <i class="bi bi-person"></i>
               <select class="selectpicker" aria-label="Default select example">
                 <option selected disabled>Label</option>
@@ -140,19 +139,17 @@
               </select>
             </div>
 
-            <div style="font-size: 10px; font-weight: 500;">
-              <label for="start"><i class="bi bi-calendar"></i>&nbsp;</i>Start Date:</label>
-              <input class="picker" type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+            <div class="dateWrapper">
+              <label for="start"><i class="bi bi-calendar"></i>&nbsp;</i>Start Date</label>
+              <input class="picker" style="text-align: center; font-weight: 500;" type="datetime-local" id="start" name="trip-start" value="2024-06-12T19:30">
             </div>
 
-            <div style="font-size: 10px; font-weight: 500;">
-              <label for="end"><i class="bi bi-calendar-check"></i>&nbsp;</i>End Date:</label>
-              <input class="picker" type="date" id="end" name="trip-end" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+            <div class="dateWrapper">
+              <label for="end"><i class="bi bi-calendar-check"></i>&nbsp;</i>End Date</label>
+              <input class="picker" style="text-align: right; font-weight: 500;" type="datetime-local" id="end" name="trip-end" min="2018-06-07T00:00" max="2024-06-14T00:00">
             </div>
-            <!-- <div onclick="showNodeForAction(event)"><i class="bi bi-calendar"></i>&nbsp;</i>Start Date</div> -->
-            <!-- <div onclick="showNodeForAction(event)"><i class="bi bi-calendar-check"></i>&nbsp;</i>End Date</div> -->
-            <!-- <div onclick="showNodeForAction(event)"><i class="bi bi-arrow-right">&nbsp;</i>Move</div> -->
-            <div>
+
+            <div class="divWrapper">
               <i class="bi bi-arrow-right"></i>
               <select class="selectpicker" aria-label="Default select example">
                 <option selected disabled>Move</option>
@@ -349,6 +346,19 @@
   <script type="module" src="./js/globals.js"></script>
   <script type="module" src="./js/task.js"></script>
   <script>
+
+    //Runs on page load.
+    function onPageLoad() {
+      var _isAdmin = isAdmin();
+
+      if (_isAdmin) {
+        let backlogEle = document.getElementById('backlog');
+        let newUserEle = document.getElementById('newUser');
+
+        backlogEle.style.display = 'block';
+        newUserEle.style.display = 'block';
+      }
+    }
 
     //Add user modal handling functions.
     function handleUserRoleSelect(event) {
