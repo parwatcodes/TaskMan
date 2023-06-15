@@ -1,2 +1,6 @@
-# Task Management
-A task management web app
+## Name
+
+TaskMan - A task management web app. 
+
+## Description
+
