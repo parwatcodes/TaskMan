@@ -26,6 +26,13 @@ export function getAllTask() {
   return appData['tasks'];
 }
 
+export function getAllTaskLoggedInUser() {
+  if (isAdmin()) return getAllTask();
+
+  let loggedInMemberEmail = localStorage.getItem('email');
+
+}
+
 export function getTaskById(id) {
   let tasks = getAllTask();
   let task = tasks.find(task => task.id === id);
@@ -58,7 +65,7 @@ export function currentUserRole() {
   let email = localStorage.getItem('email');
   let user = findUserByEmail(email);
 
-  return user.role;
+  return user?.role;
 }
 
 export function isAdmin() {

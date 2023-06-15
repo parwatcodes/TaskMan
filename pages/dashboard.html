@@ -218,7 +218,7 @@
           </div>
         </div>
 
-        <div onclick="toggleTaskModal(event, 'edit')" class="card">
+        <div onclick="toggleTaskModal(event, 'ToDo')" class="card">
           <div class="card-body">
             <h5 class="card-title">Mobile wireframes</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
@@ -425,6 +425,15 @@
     }
 
     function toggleTaskModal(event, listType) {
+      let idName = event.target.id
+      let addForm = false;
+
+      if (idName === 'addTaskBtn') {
+        addForm = true;
+      } else {
+        // fetch the id of selected task, get all the data from database.
+      }
+
       var taskModal = document.getElementById("taskModal");
       var listTypeEle = document.getElementById("listType");
 
