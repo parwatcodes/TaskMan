@@ -214,7 +214,7 @@
         <div class="cardType">
           <div>
             <span>ToDo</span>
-            <span id="totalTask">3</span>
+            <span id="totalToDoTask" class="totalTask">0</span>
           </div>
           <div class="actions">
             <div id="addTaskBtn" onclick="toggleTaskModal(event, 'ToDo')"><i class="bi bi-plus"></i></div>
@@ -228,7 +228,7 @@
         <div class="cardType">
           <div>
             <span>In Progress</span>
-            <span id="totalTask">2</span>
+            <span id="totalInProgressTask" class="totalTask">0</span>
           </div>
           <div class="actions">
             <div id="addTaskBtn" onclick="toggleTaskModal(event, 'In Progress')"><i class="bi bi-plus"></i></div>
@@ -244,7 +244,7 @@
         <div class="cardType">
           <div>
             <span>In Review</span>
-            <span id="totalTask">2</span>
+            <span id="totalInReviewTask" class="totalTask">0</span>
           </div>
           <div class="actions">
             <div id="addTaskBtn" onclick="toggleTaskModal(event, 'In Review')"><i class="bi bi-plus"></i></div>
@@ -258,7 +258,7 @@
         <div class="cardType">
           <div>
             <span>Done</span>
-            <span id="totalTask">2</span>
+            <span id="totalDoneTask" class="totalTask">0</span>
           </div>
           <div class="actions">
             <div id="addTaskBtn" onclick="toggleTaskModal(event, 'Done')"><i class="bi bi-plus"></i></div>
@@ -311,9 +311,9 @@
 
       if (inToDoTask?.length) {
         const cardContainer = document.getElementById('cardToDo');
+        document.getElementById("totalToDoTask").innerText = inToDoTask.length;
 
         inToDoTask.forEach(item => {
-
           const card = document.createElement('div');
           card.className = 'card';
           card.onclick = (event) => toggleTaskModal(event, 'ToDo');
