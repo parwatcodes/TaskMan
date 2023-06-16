@@ -1,0 +1,28 @@
+.toast {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  margin-bottom: 30px;
+  margin-right: 40px;
+
+  transform: translateY(100%);
+  opacity: 0;
+
+  transition:
+    opacity 500ms,
+    transform 500ms;
+}
+
+.toast.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.toast-body {
+  padding: 10px 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: limegreen;
+  color: darkblue;
+  border-radius: 4px;
+}
