@@ -26,11 +26,34 @@ export function getAllTask() {
   return appData['tasks'];
 }
 
-export function getAllTaskLoggedInUser() {
-  if (isAdmin()) return getAllTask();
+// Get the task for user. If loggedIn user is admin, fetch all task else fetch task assigned.
+export function getTaskList() {
+  let allTask = getAllTask();
 
-  let loggedInMemberEmail = localStorage.getItem('email');
+  if (isAdmin()){
+    return allTask;
+  }
 
+  let currentMemberEmail = localStorage.getItem('email');
+  let memberId = findUserByEmail(currentMemberEmail);
+  let memberTask = allTask.filter(task => task.assignedTo === memberId);
+
+  return memberTask;
+}
+
+export function groupTaskByListName() {
+  let taskList = getTaskList();
+
+  const transformedObject = taskList.reduce((result, item) => {
+    if (result[item.listName]) {
+      result[item.listName].push(item);
+    } else {
+      result[item.listName] = [item];
+    }
+    return result;
+  }, {});
+
+  return transformedObject;
 }
 
 export function getTaskById(id) {
@@ -46,7 +69,7 @@ export function updateTask(id, data) {
 
 export function findUserByEmail(email) {
   let users = getAppData()?.['users'];
-  let user = users.find(user => user.email === email);
+  let user = users?.find(user => user.email === email);
 
   return user;
 }
