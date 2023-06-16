@@ -1,13 +1,7 @@
-import { getMembers, getAllTask } from '../../helpers/api.js';
+import { getTaskList } from '../../helpers/api.js';
 
 // onChange handler for task name and description.
 export function handleOnChangeForTask(event) {
 
-  console.log('ixxx', event.target.id, event.target.value);
-}
-
-window.getMembers = getMembers;
-
-export function getTask() {
-
+  // console.log('ixxx', event.target.id, event.target.value);
 }

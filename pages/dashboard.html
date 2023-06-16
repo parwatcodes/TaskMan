@@ -141,12 +141,14 @@
 
             <div class="dateWrapper">
               <label for="start"><i class="bi bi-calendar"></i>&nbsp;</i>Start Date</label>
-              <input class="picker" style="text-align: center; font-weight: 500;" type="datetime-local" id="start" name="trip-start" value="2024-06-12T19:30">
+              <input class="picker" style="text-align: center; font-weight: 500;" type="datetime-local" id="start"
+                name="trip-start" value="2024-06-12T19:30">
             </div>
 
             <div class="dateWrapper">
               <label for="end"><i class="bi bi-calendar-check"></i>&nbsp;</i>End Date</label>
-              <input class="picker" style="text-align: right; font-weight: 500;" type="datetime-local" id="end" name="trip-end" min="2018-06-07T00:00" max="2024-06-14T00:00">
+              <input class="picker" style="text-align: right; font-weight: 500;" type="datetime-local" id="end"
+                name="trip-end" min="2018-06-07T00:00" max="2024-06-14T00:00">
             </div>
 
             <div class="divWrapper">
@@ -207,7 +209,7 @@
     </div>
 
     <div id="listContainer">
-      <div class="containerWrapper">
+      <div class="containerWrapper" id="cardToDo">
         <div class="cardType">
           <div>
             <span>ToDo</span>
@@ -218,30 +220,7 @@
           </div>
         </div>
 
-        <div onclick="toggleTaskModal(event, 'ToDo')" class="card">
-          <div class="card-body">
-            <h5 class="card-title">Mobile wireframes</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
-            <span class="assignee"><i class="bi bi-person"></i> Parwat Kunwar</span>
-            <hr />
-            <div class="task-footer">
-              <i style="color: red;" class="bi bi-flag-fill"></i>
-              <i class="bi bi-clock-fill">&nbsp;<span>June 20</span></i>
-            </div>
-          </div>
-        </div>
 
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">User Research</h5>
-            <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
-          </div>
-        </div>
       </div>
 
       <div class="containerWrapper">
@@ -254,23 +233,10 @@
             <div id="addTaskBtn" onclick="toggleTaskModal(event, 'In Progress')"><i class="bi bi-plus"></i></div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Login Flow</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
-          </div>
-        </div>
 
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Forgot password screen</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
-          </div>
-        </div>
+
+
+
       </div>
 
       <div class="containerWrapper">
@@ -284,23 +250,7 @@
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Login Flow</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
-          </div>
-        </div>
 
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Forgot password screen</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
-          </div>
-        </div>
       </div>
 
       <div class="containerWrapper">
@@ -311,24 +261,6 @@
           </div>
           <div class="actions">
             <div id="addTaskBtn" onclick="toggleTaskModal(event, 'Done')"><i class="bi bi-plus"></i></div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Login Flow</h5>
-            <!-- <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> -->
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Forgot password screen</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
           </div>
         </div>
 
@@ -347,6 +279,8 @@
   <script type="module" src="./js/task.js"></script>
   <script>
 
+    let taskModalData = {};
+
     //Runs on page load.
     function onPageLoad() {
       var _isAdmin = isAdmin();
@@ -357,7 +291,76 @@
 
         backlogEle.style.display = 'block';
         newUserEle.style.display = 'block';
+
+        // var
+      } else {
+
       }
+
+      loadTask();
+    }
+
+    function loadTask() {
+      let taskList = groupTaskByListName();
+
+      let inToDoTask = taskList['ToDo'];
+      let inProgressTask = taskList['In Progress'];
+      let inReviewTask = taskList['In Review'];
+      let inDoneTask = taskList['Done'];
+
+      if (inToDoTask?.length) {
+        const cardContainer = document.getElementById('cardToDo');
+
+        inToDoTask.forEach(item => {
+
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.onclick = (event) => toggleTaskModal(event, 'ToDo');
+
+          const cardBody = document.createElement('div');
+          cardBody.className = 'card-body';
+
+          const title = document.createElement('h5');
+          title.className = 'card-title';
+          title.textContent = item.name;
+
+          const description = document.createElement('p');
+          description.className = 'card-text';
+          description.textContent = item.description;
+
+          const assignee = document.createElement('span');
+          assignee.className = 'assignee';
+          assignee.innerHTML = `<i class="bi bi-person"></i> ${item.assignedTo}`;
+
+          const hr = document.createElement('hr');
+
+          const taskFooter = document.createElement('div');
+          taskFooter.className = 'task-footer';
+
+          const flagIcon = document.createElement('i');
+          flagIcon.className = 'bi bi-flag-fill';
+          flagIcon.style.color = 'red';
+
+          const clockIcon = document.createElement('i');
+          clockIcon.className = 'bi bi-clock-fill';
+
+          const dateSpan = document.createElement('span');
+          dateSpan.textContent = item.date;
+
+          cardBody.appendChild(title);
+          cardBody.appendChild(description);
+          cardBody.appendChild(assignee);
+          cardBody.appendChild(hr);
+          taskFooter.appendChild(flagIcon);
+          taskFooter.appendChild(clockIcon);
+          clockIcon.appendChild(dateSpan);
+          cardBody.appendChild(taskFooter);
+
+          card.appendChild(cardBody);
+          cardContainer.appendChild(card);
+        });
+      }
+
     }
 
     //Add user modal handling functions.
@@ -426,13 +429,14 @@
     }
 
     function toggleTaskModal(event, listType) {
-      let idName = event.target.id
+      let idName = event.target.id;
       let addForm = false;
 
       if (idName === 'addTaskBtn') {
         addForm = true;
       } else {
         // fetch the id of selected task, get all the data from database.
+
       }
 
       var taskModal = document.getElementById("taskModal");
@@ -447,8 +451,8 @@
         let selectEle = document.getElementById('member-select');
 
         members.forEach(member => {
-          selectEle.add(new Option(member.email))
-        })
+          selectEle.add(new Option(member.email));
+        });
       }
     }
 
@@ -466,12 +470,6 @@
     };
 
     // End of modal handling functions.
-
-    //Modal operation(i.e: Add/Edit) handling functions
-    var tasks = [];
-    var selectedListType;
-    var initialTask = {};
-
     function onChangeForTask(event) {
       let key = event.target.id;
       let value = event.target.value;
@@ -479,6 +477,7 @@
       initialTask[key] = value;
       // handleOnChangeForTask(event);
     }
+
   </script>
 
 </body>

@@ -15,6 +15,7 @@ body {
   background-color: #E6ECF0;
   border-radius: 5px 5px 0px 0px;
   padding: 15px 20px;
+  width: 25%;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
@@ -176,7 +177,7 @@ body {
 }
 
 #totalTask {
-  background-color: rgb(41, 37, 38);
+  background-color: #54131f;
   padding: 2px 8px;
   border-radius: 10px;
   font-size: 10px;
@@ -191,6 +192,7 @@ body {
   display: flex;
   overflow: auto;
   min-height: 700px;
+  width: 100%;
 }
 
 .autoGenPassword {

@@ -4,6 +4,17 @@ export const URL = 'http://localhost:5050'
 export const APP_DATA_KEY = 'taskMan-data';
 export const URI_LOGIN = '/pages/login.html';
 export const URI_DASHBOARD = '/pages/dashboard.html';
+export const LIST = {
+  TODO: 'ToDo',
+  IN_PROGRESS: 'In Progress',
+  IN_REVIEW: 'In Review',
+  DONE: 'Done'
+};
+export const TASK_PRIORITY = {
+  LOW: 'low',
+  medium: 'medium',
+  HIGH: 'high'
+};
 export const DEFAULT_ADMIN = {
   "id": 1,
   "role": ADMIN,
@@ -28,16 +39,7 @@ export const DEFAULT_TASK = {
   "startDate": "06-06-2023",
   "endDate": "12-06-2023",
   "createdBy": 1,
-  "assignedTo": 2
+  "assignedTo": 2,
+  "listName": LIST.TODO,
+  "priority": TASK_PRIORITY.LOW
 }
-export const LIST = {
-  TODO: 'ToDo',
-  IN_PROGRESS: 'In Progress',
-  IN_REVIEW: 'In Review',
-  DONE: 'Done'
-};
-export const TASK_PRIORITY = {
-  LOW: 'low',
-  medium: 'medium',
-  HIGH: 'high'
-};
