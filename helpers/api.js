@@ -26,6 +26,12 @@ export function getAllTask() {
   return appData['tasks'];
 }
 
+export function addTask(data) {
+  let appData = getAppData();
+  appData.tasks.push(data);
+}
+
+
 // Get the task for user. If loggedIn user is admin, fetch all task else fetch task assigned.
 export function getTaskList() {
   let allTask = getAllTask();

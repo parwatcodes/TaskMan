@@ -1,4 +1,5 @@
 import { login } from './login.js';
+import { loadTask } from './dashboard.js'
 import { addTask } from '../../helpers/api.js';
 import { generatePassword } from './add-user.js';
 import { showToast, hideToast } from './toast.js'
@@ -11,6 +12,7 @@ window.login = login;
 window.logout = logout;
 window.addTask = addTask;
 window.isAdmin = isAdmin;
+window.loadTask = loadTask;
 window.showToast = showToast;
 window.hideToast = hideToast;
 window.getMembers = getMembers;
