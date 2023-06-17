@@ -224,8 +224,8 @@
     color: green;
 }
 
-#start,
-#end {
+#startDate,
+#endDate {
   font-size: 12px;
   border: none;
   padding: 6px 0px;
