@@ -2,10 +2,13 @@
   position: fixed;
   bottom: 0;
   right: 0;
-  width: 300px;
+  min-width: 250px;
+  max-width: fit-content;
   margin-bottom: 30px;
   margin-right: 40px;
 
+  border: 0px;
+  border-radius: 2px;
   transform: translateY(100%);
   opacity: 0;
 
@@ -20,9 +23,11 @@
 }
 
 .toast-body {
-  padding: 10px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 30px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: limegreen;
-  color: darkblue;
-  border-radius: 4px;
+  color: blue;
+  border-radius: 2px;
 }
