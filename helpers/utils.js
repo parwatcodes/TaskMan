@@ -15,9 +15,6 @@ export function persistUser(email) {
   localStorage.setItem('email', email);
 }
 
-export function logout() {
-  localStorage.removeItem('isAuthenticated');
-  localStorage.removeItem('email');
-
-  goto("/pages/login.html")
+export function uuid() {
+  return URL.createObjectURL(new Blob([])).slice(-36);
 }

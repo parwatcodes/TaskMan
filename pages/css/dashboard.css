@@ -213,3 +213,7 @@ body {
 #backlog, #newUser {
   display: none;
 }
+
+.hiddenElement {
+  /* display: none; */
+}

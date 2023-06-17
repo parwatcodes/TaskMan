@@ -1,4 +1,4 @@
-import { stringifyIt, parseIt } from './utils.js';
+import { stringifyIt, parseIt, uuid } from './utils.js';
 import { APP_DATA_KEY, ADMIN, MEMBER } from './constants.js';
 
 export function getAppData() {
@@ -23,14 +23,22 @@ export function getAdmins() {
 export function getAllTask() {
   let appData = getAppData();
 
-  return appData['tasks'];
+  return appData?.['tasks'];
 }
 
 export function addTask(data) {
   let appData = getAppData();
-  appData.tasks.push(data);
+
+  appData?.tasks?.push({...data, id: uuid()});
+  localStorage.setItem(APP_DATA_KEY, stringifyIt(appData));
 }
 
+export function addUser(data) {
+  let appData = getAppData();
+
+  appData?.users?.push({...data, id: uuid()});
+  localStorage.setItem(APP_DATA_KEY, stringifyIt(data));
+}
 
 // Get the task for user. If loggedIn user is admin, fetch all task else fetch task assigned.
 export function getTaskList() {
@@ -42,7 +50,7 @@ export function getTaskList() {
 
   let currentMemberEmail = localStorage.getItem('email');
   let memberId = findUserByEmail(currentMemberEmail);
-  let memberTask = allTask.filter(task => task.assignedTo === memberId);
+  let memberTask = allTask?.filter(task => task.assignedTo === memberId);
 
   return memberTask;
 }
@@ -50,7 +58,7 @@ export function getTaskList() {
 export function groupTaskByListName() {
   let taskList = getTaskList();
 
-  const transformedObject = taskList.reduce((result, item) => {
+  const transformedObject = taskList?.reduce((result, item) => {
     if (result[item.listName]) {
       result[item.listName].push(item);
     } else {
@@ -101,4 +109,11 @@ export function isAdmin() {
   let role = currentUserRole();
 
   return role === 'admin';
+}
+
+export function logout() {
+  localStorage.removeItem('isAuthenticated');
+  localStorage.removeItem('email');
+
+  goto("/pages/login.html")
 }
