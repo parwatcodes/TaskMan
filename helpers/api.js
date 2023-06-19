@@ -37,7 +37,7 @@ export function addUser(data) {
   let appData = getAppData();
 
   appData?.users?.push({...data, id: uuid()});
-  localStorage.setItem(APP_DATA_KEY, stringifyIt(data));
+  localStorage.setItem(APP_DATA_KEY, stringifyIt(appData));
 }
 
 // Get the task for user. If loggedIn user is admin, fetch all task else fetch task assigned.
@@ -78,7 +78,12 @@ export function getTaskById(id) {
 }
 
 export function updateTask(id, data) {
+  let appData = getAppData();
 
+  let allTask = appData?.tasks?.map(task => task.id === id ? data : task);
+  appData.tasks = allTask;
+
+  localStorage.setItem(APP_DATA_KEY, stringifyIt(appData));
 }
 
 export function findUserByEmail(email) {

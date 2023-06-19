@@ -1,5 +1,4 @@
-<!doctype html>
-<html lang="en">
+<!doctype html><html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -15,6 +14,132 @@
 </head>
 
 <body onload="onPageLoad();">
+  <script>
+    //Runs on page load.
+    function onPageLoad() {
+      var _isAdmin = isAdmin();
+
+      if (_isAdmin) {
+        let backlogEle = document.getElementById('backlog');
+        let newUserEle = document.getElementById('newUser');
+
+        backlogEle.style.display = 'block';
+        newUserEle.style.display = 'block';
+
+        // var
+      } else {
+
+      }
+
+      loadTask();
+    }
+
+    window.onclick = function (event) {
+      var taskModal = document.getElementById("taskModal");
+      var addUserModal = document.getElementById('userModal');
+
+      if (event.target == taskModal) {
+        handleTaskSubmit();
+        taskModal.style.display = 'none';
+      }
+
+      if (event.target === addUserModal) {
+        addUserModal.style.display = 'none';
+      }
+    };
+
+    // End of modal handling functions.
+    function onChangeForTask(event) {
+      let { id, value } = event.target;
+
+      taskModalData[id] = value;
+    }
+
+    function onChangeForUser(event) {
+      let { key, value } = event.target;
+
+      memberModalData[key] = value;
+    }
+
+    //Add user modal handling functions.
+    function handleUserRoleSelect(event) {
+      let role = event.target.value;
+      let payRateDiv = document.getElementById('payrateContainer');
+
+      if (role === 'member') {
+        payRateDiv.style.visibility = 'visible';
+      } else {
+        payRateDiv.style.visibility = 'hidden';
+      }
+    }
+
+    function generateAutoPassword() {
+      let email = document.getElementById('userEmail');
+      let clipBoardEle = document.getElementById('clip-board');
+      let passwordEle = document.getElementById('autoGenPassword');
+
+      if (email.value) {
+        passwordEle.value = generatePassword(email.value);
+        clipBoardEle.style.visibility = 'visible';
+      }
+    }
+
+    function handleUserFormSubmit(event) {
+      event.preventDefault();
+
+      let email = document.getElementById("userEmail")?.value;
+      let password = document.getElementById("autoGenPassword")?.value;
+      let role = document.getElementById("userRoleSelect")?.value;
+      let hourlyRateEle = document.getElementById("hourlyRate");
+
+      let userData = {
+        email,
+        password,
+        role,
+      };
+
+      if (role === 'member') {
+        hourlyRateEle.required = true;
+        userData.hourlyRate = hourlyRateEle?.value;;
+      }
+
+      addUser(userData);
+    }
+
+    function copyPassword() {
+      let copyText = document.getElementById('autoGenPassword');
+      let clipBoardEle = document.getElementById('clip-board');
+
+      clipBoardEle.style.color = 'green';
+
+      copyText.select();
+      navigator.clipboard.writeText(copyText.value);
+    }
+
+    //Modal popup handling functions.
+    function onClose(event) {
+      var id = event.target.id;
+
+      if (id === 'closeUserModal') {
+
+        var addUserModal = document.getElementById("userModal");
+        return addUserModal.style.display = 'none';
+      }
+
+      handleTaskSubmit();
+      var taskModal = document.getElementById("taskModal");
+      taskModal.style.display = 'none';
+
+    }
+
+    // Modal to add new user.
+    function openAddUserModal() {
+      var addUserModal = document.getElementById('userModal');
+
+      addUserModal.style.display = 'block';
+    }
+
+  </script>
   <div>
     <div class="mainHeader">
       <div class="menu">
@@ -150,8 +275,8 @@
                 aria-label="Default select example">
                 <option disabled>Move</option>
                 <option selected value="ToDo">ToDo</option>
-                <option value="In Progress">In Progress</option>
-                <option value="In Review">In Review</option>
+                <option value="InProgress">In Progress</option>
+                <option value="InReview">In Review</option>
                 <option value="Done">Done</option>
               </select>
             </div>
@@ -164,6 +289,7 @@
       <i class="bi bi-search"></i><input class="search-bar" type="text" placeholder="Search Items" />
     </div>
 
+    <!-- List Type Container -->
     <div id="listContainer">
       <div class="containerWrapper" id="cardToDo">
         <div class="cardType">
@@ -172,7 +298,7 @@
             <span id="totalcardToDo" class="totalTask">0</span>
           </div>
           <div class="actions">
-            <div id="addTaskBtn" onclick="toggleTaskModal(event, 'ToDo')"><i class="bi bi-plus"></i></div>
+            <div id="addTaskBtn" onclick="toggleTaskModal(event, 'ToDo')"><i id="addIcon" class="bi bi-plus"></i></div>
           </div>
         </div>
 
@@ -183,10 +309,11 @@
         <div class="cardType">
           <div>
             <span>In Progress</span>
-            <span id="totalcardInProgess" class="totalTask">0</span>
+            <span id="totalcardInProgress" class="totalTask">0</span>
           </div>
           <div class="actions">
-            <div id="addTaskBtn" onclick="toggleTaskModal(event, 'In Progress')"><i class="bi bi-plus"></i></div>
+            <div id="addTaskBtn" onclick="toggleTaskModal(event, 'In Progress')"><i id="addIcon" class="bi bi-plus"></i>
+            </div>
           </div>
         </div>
 
@@ -202,7 +329,8 @@
             <span id="totalcardInReview" class="totalTask">0</span>
           </div>
           <div class="actions">
-            <div id="addTaskBtn" onclick="toggleTaskModal(event, 'In Review')"><i class="bi bi-plus"></i></div>
+            <div id="addTaskBtn" onclick="toggleTaskModal(event, 'In Review')"><i id="addIcon" class="bi bi-plus"></i>
+            </div>
           </div>
         </div>
 
@@ -216,7 +344,7 @@
             <span id="totalcardInDone" class="totalTask">0</span>
           </div>
           <div class="actions">
-            <div id="addTaskBtn" onclick="toggleTaskModal(event, 'Done')"><i class="bi bi-plus"></i></div>
+            <div id="addTaskBtn" onclick="toggleTaskModal(event, 'Done')"><i id="addIcon" class="bi bi-plus"></i></div>
           </div>
         </div>
 
@@ -244,135 +372,37 @@
       assignedTo: '',
       startDate: '',
       endDate: '',
-      priority: '',
-      listName: ''
+      priority: 'low',
+      listName: 'ToDo'
     };
     let memberModalData = {};
-
-    //Runs on page load.
-    function onPageLoad() {
-      var _isAdmin = isAdmin();
-
-      if (_isAdmin) {
-        let backlogEle = document.getElementById('backlog');
-        let newUserEle = document.getElementById('newUser');
-
-        backlogEle.style.display = 'block';
-        newUserEle.style.display = 'block';
-
-        // var
-      } else {
-
-      }
-
-      loadTask();
-    }
-
-    //Add user modal handling functions.
-    function handleUserRoleSelect(event) {
-      let role = event.target.value;
-      let payRateDiv = document.getElementById('payrateContainer');
-
-      if (role === 'member') {
-        payRateDiv.style.visibility = 'visible';
-      } else {
-        payRateDiv.style.visibility = 'hidden';
-      }
-    }
-
-    function generateAutoPassword() {
-      let email = document.getElementById('userEmail');
-      let clipBoardEle = document.getElementById('clip-board');
-      let passwordEle = document.getElementById('autoGenPassword');
-
-      if (email.value) {
-        passwordEle.value = generatePassword(email.value);
-        clipBoardEle.style.visibility = 'visible';
-      }
-    }
-
-    function handleUserFormSubmit(event) {
-      event.preventDefault();
-
-      let email = document.getElementById("userEmail")?.value;
-      let password = document.getElementById("autoGenPassword")?.value;
-      let role = document.getElementById("userRoleSelect")?.value;
-      let hourlyRateEle = document.getElementById("hourlyRate");
-
-      let userData = {
-        email,
-        password,
-        role,
-      };
-
-      if (role === 'member') {
-        hourlyRateEle.required = true;
-        userData.hourlyRate = hourlyRateEle?.value;;
-      }
-
-      addUser(userData);
-    }
-
-    function copyPassword() {
-      let copyText = document.getElementById('autoGenPassword');
-      let clipBoardEle = document.getElementById('clip-board');
-
-      clipBoardEle.style.color = 'green';
-
-      copyText.select();
-      navigator.clipboard.writeText(copyText.value);
-    }
-
-    //Modal popup handling functions.
-    function onClose(event) {
-      var id = event.target.id;
-
-      if (id === 'closeUserModal') {
-
-        var addUserModal = document.getElementById("userModal");
-        return addUserModal.style.display = 'none';
-      }
-
-      handleTaskSubmit();
-      var taskModal = document.getElementById("taskModal");
-      taskModal.style.display = 'none';
-
-    }
-
-    // Modal to add new user.
-    function openAddUserModal() {
-      var addUserModal = document.getElementById('userModal');
-
-      addUserModal.style.display = 'block';
-    }
+    let taskId;
 
     function getInitialFormValues() {
-        document.getElementById('name').value = taskModalData.name;
-        document.getElementById('description').value = taskModalData.description;
-        document.getElementById('assignedTo').value = taskModalData.assignedTo;
-        document.getElementById('priority').value = taskModalData.priority;
-        document.getElementById('startDate').value = taskModalData.startDate;
-        document.getElementById('endDate').value = taskModalData.endDate;
-        document.getElementById('listName').value = taskModalData.listName;
-      }
+      document.getElementById('name').value = taskModalData?.name;
+      document.getElementById('description').value = taskModalData?.description;
+      document.getElementById('assignedTo').value = taskModalData?.assignedTo;
+      document.getElementById('priority').value = taskModalData?.priority;
+      document.getElementById('startDate').value = taskModalData?.startDate;
+      document.getElementById('endDate').value = taskModalData?.endDate;
+      document.getElementById('listName').value = taskModalData?.listName;
+    }
 
-    function toggleTaskModal(event, listType, taskId) {
-      showToast();
+    function toggleTaskModal(event, listType, id) {
       let idName = event.target.id;
-      let addForm = false;
 
-      if (idName === 'addTaskBtn') {
-        addForm = true;
-      } else {
-        taskModalData = getTaskById(taskId);
+      if (id) {
+        taskId = id;
+        taskModalData = getTaskById(id);
       }
+
+      getInitialFormValues();
 
       var taskModal = document.getElementById("taskModal");
       var listTypeEle = document.getElementById("listType");
 
       taskModal.style.display = 'block';
       listTypeEle.innerHTML = listType;
-      selectedListType = listType;
 
       let members = getMembers();
       if (members?.length) {
@@ -382,43 +412,18 @@
           selectEle.add(new Option(member.email));
         });
       }
-
-      getInitialFormValues();
-    }
-
-    window.onclick = function (event) {
-      var taskModal = document.getElementById("taskModal");
-      var addUserModal = document.getElementById('userModal');
-
-      if (event.target == taskModal) {
-        handleTaskSubmit();
-        taskModal.style.display = 'none';
-      }
-
-      if (event.target === addUserModal) {
-        addUserModal.style.display = 'none';
-      }
-    };
-
-    // End of modal handling functions.
-    function onChangeForTask(event) {
-      let { key, value } = event.target;
-
-      taskModalData[key] = value;
-    }
-
-    function onChangeForUser(event) {
-      let { key, value } = event.target;
-
-      memberModalData[key] = value;
     }
 
     function handleTaskSubmit() {
       if (taskModalData?.name || taskModalData?.description) {
         const cardContainer = document.getElementById('cardToDo');
+        if (taskId) {
+          updateTask(taskId, taskModalData); //TODO: take only modified fields.
+        } else {
+          addTask(taskModalData);
+        }
 
-        addTask(taskModalData);
-        loadTask();
+        window.location.reload();
       } else {
 
       }

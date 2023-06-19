@@ -1,15 +1,20 @@
 import { LIST } from '../../helpers/constants.js';
 import { groupTaskByListName } from '../../helpers/api.js';
+const PRIOTITY_MAPPER = {
+  'high': 'red',
+  'medium': 'orange',
+  'low': 'green'
+}
 
 export function loadTask() {
   let taskList = groupTaskByListName();
 
   let inToDoTask = taskList?.['ToDo'];
-  let inProgressTask = taskList?.['In Progress'];
-  let inReviewTask = taskList?.['In Review'];
+  let inProgressTask = taskList?.['InProgress'];
+  let inReviewTask = taskList?.['InReview'];
   let inDoneTask = taskList?.['Done'];
   let listType = Object.values(LIST);
-  let cardType = ['cardToDo', 'cardInReview', 'cardInReview', 'cardInDone'];
+  let cardType = ['cardToDo', 'cardInProgress', 'cardInReview', 'cardInDone'];
 
   [inToDoTask, inProgressTask, inReviewTask, inDoneTask].forEach((taskArr, idx) => {
     if (taskArr?.length) {
@@ -20,7 +25,7 @@ export function loadTask() {
 
 function appendToList(data, cardContainerType, listType) {
   const cardContainer = document.getElementById(cardContainerType);
-  document.getElementById(`total${cardContainerType}`).innerText = data.length;
+  document.getElementById(`total${cardContainerType}`).innerText = data?.length;
 
   data.forEach(item => {
     const card = document.createElement('div');
@@ -48,8 +53,8 @@ function appendToList(data, cardContainerType, listType) {
     taskFooter.className = 'task-footer';
 
     const flagIcon = document.createElement('i');
-    flagIcon.className = 'bi bi-flag-fill';
-    flagIcon.style.color = 'red';
+    flagIcon.className = 'bi bi-flag-fill h6';
+    flagIcon.style.color = PRIOTITY_MAPPER[item.priority];
 
     const clockIcon = document.createElement('i');
     clockIcon.className = 'bi bi-clock-fill';

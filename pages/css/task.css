@@ -18,6 +18,8 @@
 }
 
 .taskMainContent .title input {
+  font-size: 14px;
+  font-weight: 500;
   height: 40px;
   width: 300px;
   border: 2px solid #E6ECF0;
