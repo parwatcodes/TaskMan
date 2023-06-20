@@ -4,7 +4,16 @@ import { generatePassword } from './add-user.js';
 import { showToast, hideToast } from './toast.js'
 import { loadTask } from './dashboard.js'
 import { isAuthenticated } from '../../helpers/validators.js';
-import { isAdmin, getMembers, groupTaskByListName, addTask, addUser, updateTask, logout, getTaskById } from '../../helpers/api.js'
+import {
+  logout,
+  isAdmin,
+  addTask,
+  addUser,
+  getMembers,
+  updateTask,
+  getTaskById,
+  groupTaskByListName
+} from '../../helpers/api.js'
 
 window.goto = goto;
 window.login = login;
