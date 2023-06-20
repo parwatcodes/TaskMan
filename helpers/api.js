@@ -49,8 +49,7 @@ export function getTaskList() {
   }
 
   let currentMemberEmail = localStorage.getItem('email');
-  let memberId = findUserByEmail(currentMemberEmail);
-  let memberTask = allTask?.filter(task => task.assignedTo === memberId);
+  let memberTask = allTask?.filter(task => task.assignedTo === currentMemberEmail);
 
   return memberTask;
 }
