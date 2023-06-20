@@ -265,6 +265,7 @@ input.picker[type="datetime-local"]:hover {
 .hoursContainer {
   border: none;
   display: flex;
+  position: relative;
   align-items: center;
   padding: 0px 5px;
   border-radius: 5px;
@@ -285,4 +286,10 @@ input.picker[type="datetime-local"]:hover {
 
 #hoursWorked:disabled {
   cursor: no-drop;
+}
+
+.hoursContainer::after {
+  position: absolute;
+  content: 'hrs';
+  right: 25px
 }

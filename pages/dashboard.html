@@ -20,6 +20,7 @@
     //Runs on page load.
     let _isAdmin = false;
     function onPageLoad() {
+      isAuthenticated();
       _isAdmin = isAdmin();
 
       if (_isAdmin) {
@@ -66,6 +67,11 @@
 
       displayStartEndDate();
 
+      if (id === 'listName' && value === "Done") {
+        document.getElementById('hoursWorked').removeAttribute("disabled");
+      } else {
+        document.getElementById('hoursWorked').setAttribute("disabled", true);
+      }
     }
 
     function displayStartEndDate() {
@@ -342,7 +348,7 @@
 
             <div class="hoursContainer">
               <label for="hoursWorked"><i class="bi bi-hourglass-split"></i>&nbsp;</i></label>
-              <input onchange="onChangeForTask(event)" id="hoursWorked" type="number" placeholder="hours worked" disabled >
+              <input onchange="onChangeForTask(event)" id="hoursWorked" type="number" placeholder="" disabled >
             </div>
 
           </div>
@@ -441,7 +447,8 @@
       startDate: '',
       endDate: '',
       priority: 'low',
-      listName: 'ToDo'
+      listName: 'ToDo',
+      hoursWorked: 0,
     };
     let taskId;
 
@@ -453,6 +460,7 @@
       document.getElementById('startDate').value = taskModalData?.startDate;
       document.getElementById('endDate').value = taskModalData?.endDate;
       document.getElementById('listName').value = taskModalData?.listName;
+      document.getElementById('hoursWorked').value = taskModalData?.hoursWorked;
     }
 
     function toggleTaskModal(event, listType, id) {
@@ -511,10 +519,7 @@
         taskModalData.assignedTo = members[0].email;
       }
 
-      console.log('task', taskModalData.name);
       getInitialFormValues();
-
-      console.log('vv', document.getElementById('name').value);
     }
 
     function handleTaskSubmit() {

@@ -9,7 +9,7 @@ export function isAuthenticated() {
 
     return goto(URI_DASHBOARD);
   } else {
-    if (window.location.pathname !== URI) {
+    if (window.location.pathname !== URI_LOGIN) {
 
       return goto(URI_LOGIN);
     }

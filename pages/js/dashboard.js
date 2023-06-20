@@ -29,6 +29,7 @@ function appendToList(data, cardContainerType, listType) {
   const cardContainer = document.getElementById(cardContainerType);
   document.getElementById(`total${cardContainerType}`).innerText = data?.length;
 
+  console.log(data)
   data.forEach(item => {
     const card = document.createElement('div');
     card.className = 'card';
