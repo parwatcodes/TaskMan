@@ -15,12 +15,12 @@
   <link rel="stylesheet" href="css/profile.css">
 </head>
 
-<body onload="onPageLoad();">
+<body onload="onPageLoad(); ">
   <script>
     //Runs on page load.
     let _isAdmin = false;
+
     function onPageLoad() {
-      isAuthenticated();
       _isAdmin = isAdmin();
 
       if (_isAdmin) {
