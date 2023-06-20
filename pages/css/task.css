@@ -257,3 +257,8 @@ input.picker[type="datetime-local"]::-webkit-calendar-picker-indicator {
 input.picker[type="datetime-local"]:hover {
   color: green;
 }
+
+#dateContainer {
+  font-weight: 500;
+  margin-left: 10px;
+}

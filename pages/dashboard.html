@@ -121,7 +121,6 @@
       var id = event.target.id;
 
       if (id === 'closeUserModal') {
-
         var addUserModal = document.getElementById("userModal");
         return addUserModal.style.display = 'none';
       }
@@ -129,7 +128,6 @@
       handleTaskSubmit();
       var taskModal = document.getElementById("taskModal");
       taskModal.style.display = 'none';
-
     }
 
     // Modal to add new user.
@@ -221,11 +219,11 @@
           <i class="bi bi-briefcase " style="font-size: 25px;">&nbsp;&nbsp;</i>
           <input onchange="onChangeForTask(event)" id="name" type="text" placeholder="Task name" />
         </div>
-        <div style="display: flex; align-items: center;">
+        <div style="display: flex; align-items: baseline;">
           <span class="list" id="listType">ToDo</span>
-          <div style="display: none;">
-            <span>Start Date:</span>
-            <span>Due Date:</span>
+          <div id="dateContainer" style="display: none;">
+            <span id="startDateLabel">Start Date:</span>
+            <span id="dueDateLabel">Due Date:</span>
           </div>
         </div>
         <div class="content">
@@ -241,8 +239,7 @@
               <i class="bi bi-person"></i>
               <select onchange="onChangeForTask(event)" id='assignedTo' class="selectpicker"
                 aria-label="Default select example">
-                <option selected disabled>Members</option>
-
+                <option selected>Members</option>
               </select>
             </div>
 
@@ -394,6 +391,20 @@
       if (id) {
         taskId = id;
         taskModalData = getTaskById(id);
+
+        let dateWrapperEle = document.getElementById('dateContainer');
+
+        if (taskModalData?.startDate) {
+          dateWrapperEle.style.display = 'block';
+          let startDateEle = document.getElementById("startDateLabel");
+          startDateEle.innerText = `Start Date: ${taskModalData?.startDate}`
+        }
+
+        if (taskModalData?.endDate) {
+          dateWrapperEle.style.display = 'block';
+          let endDateEle = document.getElementById("dueDateLabel");
+          endDateEle.innerText = `Due Date: ${taskModalData?.endDate}`
+        }
       }
 
       getInitialFormValues();
@@ -409,7 +420,8 @@
         let selectEle = document.getElementById('assignedTo');
 
         members.forEach(member => {
-          selectEle.add(new Option(member.email));
+          let { email } = member;
+          selectEle.add(new Option(email, email));
         });
       }
     }
