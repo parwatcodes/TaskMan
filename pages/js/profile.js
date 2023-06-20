@@ -12,7 +12,7 @@ window.openProfileModal = function () {
   let joinedDate = document.getElementById('user-joinedDate');
   let role = document.getElementById('user-role');
 
-  nameEle.innerText = data.email.split('@')[0];
+  nameEle.innerText = data.fullname || data.email.split('@')[0];
   emailEle.innerText = data.email;
   joinedDate.innerText = 'Joined on June, 2023';
   role.innerText = data?.role?.replace(data.role[0], data.role[0].toUpperCase());

@@ -22,15 +22,10 @@
   font-weight: 500;
   height: 40px;
   width: 300px;
-  border: 2px solid #E6ECF0;
+  border: 1px solid #E6ECF0;
   border-radius: 5px;
   padding-left: 10px;
   outline: none;
-}
-
-.taskMainContent .title input:hover,
-.taskMainContent .title input:focus {
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 }
 
 .taskMainContent .title h5 {
@@ -43,7 +38,6 @@
   font-size: 18px;
   font-weight: 500;
   color: #494848;
-
 }
 
 .content {
@@ -54,17 +48,12 @@
 
 .content textarea {
   width: 300px;
-  height: 150px;
-  border: 2px solid #E6ECF0;
+  height: 190px;
+  border: 1px solid #E6ECF0;
   border-radius: 5px;
   padding: 10px;
   outline: none;
   resize: none;
-}
-
-.content textarea:focus,
-textarea:hover {
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 }
 
 .close {
@@ -268,6 +257,32 @@ input.picker[type="datetime-local"]:hover {
   width: auto;
 }
 
-#startDateValue, #dueDateValue {
+#startDateValue,
+#dueDateValue {
   font-style: normal;
+}
+
+.hoursContainer {
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 0px 5px;
+  border-radius: 5px;
+}
+
+.hoursContainer label {
+  display: flex;
+}
+
+#hoursWorked {
+  border: none;
+  border-radius: 5px;
+  height: 26px;
+  width: 100%;
+  outline: none;
+  background-color: rgb(221, 222, 228);
+}
+
+#hoursWorked:disabled {
+  cursor: no-drop;
 }
