@@ -1,10 +1,12 @@
 import { LIST } from '../../helpers/constants.js';
 import { groupTaskByListName } from '../../helpers/api.js';
+import { readableDateFormat } from '../../helpers/utils.js'
+
 const PRIOTITY_MAPPER = {
   'high': 'red',
   'medium': 'orange',
   'low': 'green'
-}
+};
 
 export function loadTask() {
   let taskList = groupTaskByListName();
@@ -20,7 +22,7 @@ export function loadTask() {
     if (taskArr?.length) {
       appendToList(taskArr, cardType[idx], listType[idx]);
     }
-  })
+  });
 }
 
 function appendToList(data, cardContainerType, listType) {
@@ -53,14 +55,19 @@ function appendToList(data, cardContainerType, listType) {
     taskFooter.className = 'task-footer';
 
     const flagIcon = document.createElement('i');
-    flagIcon.className = 'bi bi-flag-fill h6';
+    flagIcon.className = 'bi bi-flag-fill';
+    flagIcon.style.fontSize = '14px';
     flagIcon.style.color = PRIOTITY_MAPPER[item.priority];
 
     const clockIcon = document.createElement('i');
     clockIcon.className = 'bi bi-clock-fill';
+    clockIcon.style.fontSize = '14px';
+
+    let formattedEndDate = readableDateFormat(item.endDate)
 
     const dateSpan = document.createElement('span');
-    dateSpan.textContent = item.endDate;
+    dateSpan.textContent = formattedEndDate || '_';
+    dateSpan.style.fontWeight = 500;
 
     cardBody.appendChild(title);
     cardBody.appendChild(description);

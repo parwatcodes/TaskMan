@@ -1,9 +1,9 @@
 import { login } from './login.js';
-import { goto } from '../../helpers/utils.js';
+import { loadTask } from './dashboard.js'
 import { generatePassword } from './add-user.js';
 import { showToast, hideToast } from './toast.js'
-import { loadTask } from './dashboard.js'
 import { isAuthenticated } from '../../helpers/validators.js';
+import { goto, readableDateFormat } from '../../helpers/utils.js';
 import {
   logout,
   isAdmin,
@@ -31,4 +31,5 @@ window.getTaskById = getTaskById;
 window.findUserByEmail = findUserByEmail;
 window.isAuthenticated = isAuthenticated;
 window.generatePassword = generatePassword;
+window.readableDateFormat = readableDateFormat;
 window.groupTaskByListName = groupTaskByListName;

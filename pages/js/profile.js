@@ -7,10 +7,10 @@ window.openProfileModal = function () {
 
   let data = getLoggedUserInfo();
 
-  let nameEle = document.getElementById('name');
-  let emailEle = document.getElementById('email');
-  let joinedDate = document.getElementById('joinedDate');
-  let role = document.getElementById('role');
+  let nameEle = document.getElementById('user-name');
+  let emailEle = document.getElementById('user-email');
+  let joinedDate = document.getElementById('user-joinedDate');
+  let role = document.getElementById('user-role');
 
   nameEle.innerText = data.email.split('@')[0];
   emailEle.innerText = data.email;
