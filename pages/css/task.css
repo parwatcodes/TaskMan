@@ -28,6 +28,10 @@
   outline: none;
 }
 
+.taskMainContent .title input:hover, .taskMainContent .title input:focus ß{
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+}
+
 .taskMainContent .title h5 {
   margin: 0px;
 }
@@ -55,6 +59,10 @@
   padding: 10px;
   outline: none;
   resize: none;
+}
+
+.content textarea:focus, textarea:hover {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 }
 
 .close {
@@ -135,7 +143,8 @@
 }
 
 #addTaskBtn:hover {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+
 }
 
 .modal1 {
@@ -210,7 +219,7 @@
 }
 
 .selectpicker:hover {
-  color: green;
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
 }
 
 .dateWrapper {
@@ -223,7 +232,7 @@
 }
 
 .dateWrapper:hover, .divWrapper:hover {
-    color: green;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
 #startDate,
@@ -255,7 +264,7 @@ input.picker[type="datetime-local"]::-webkit-calendar-picker-indicator {
 }
 
 input.picker[type="datetime-local"]:hover {
-  color: green;
+  /* color: green; */
 }
 
 #dateContainer {
