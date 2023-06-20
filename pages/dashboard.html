@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/dashboard.css">
   <link rel="stylesheet" href="css/task.css">
   <link rel="stylesheet" href="css/toast.css">
+  <link rel="stylesheet" href="css/profile.css">
 </head>
 
 <body onload="onPageLoad();">
@@ -41,6 +42,7 @@
     window.onclick = function (event) {
       var taskModal = document.getElementById("taskModal");
       var addUserModal = document.getElementById('userModal');
+      var userProfileModal = document.getElementById('profileModal');
 
       if (event.target == taskModal) {
         handleTaskSubmit();
@@ -49,6 +51,10 @@
 
       if (event.target === addUserModal) {
         addUserModal.style.display = 'none';
+      }
+
+      if (event.target === userProfileModal) {
+        userProfileModal.style.display = 'none';
       }
     };
 
@@ -141,6 +147,8 @@
       addUserModal.style.display = 'block';
     }
 
+
+
   </script>
   <div>
     <div class="mainHeader">
@@ -148,7 +156,7 @@
         <div onclick="goto('/pages/dashboard.html')"><i class="bi bi-card-heading"></i>&nbsp;DashBoard</div>
         <div id="backlog"><i class="bi bi-safe"></i>&nbsp;Backlog</div>
         <div id="newUser" onclick="openAddUserModal()"><i class="bi bi-plus"></i>&nbsp;New User</div>
-        <div><i class="bi bi-person-circle"></i>&nbsp;Profile</div>
+        <div onclick="openProfileModal()"><i class="bi bi-person-circle"></i>&nbsp;Profile</div>
         <div onclick="logout()"><i class="bi bi-box-arrow-right"></i>&nbsp;Logout</div>
       </div>
     </div>
@@ -161,6 +169,24 @@
   </div>
 
   <div class="main">
+
+
+    <!-- USER PROFILE MODAL -->
+
+    <div class="modal1" id="profileModal">
+      <div class="userProfile">
+        <div class="profile">
+          <!-- <img src="avatar.jpg" alt="Profile Picture"> -->
+          <div class="icon">
+            <i class="bi bi-person-circle h1"></i>
+          </div>
+          <h2 id="name"></h2>
+          <p id="email"></p>
+          <p id="role"></p>
+          <p id="joinedDate"></p>
+        </div>
+      </div>
+    </div>
 
     <!-- ADD USER MODAL -->
     <div class="modal1" id="userModal">
@@ -366,6 +392,7 @@
   <script type="module" src="./js/dashboard.js"></script>
   <script type="module" src="./js/globals.js"></script>
   <script type="module" src="./js/task.js"></script>
+  <script type="module" src="./js/profile.js"></script>
   <script>
     let taskModalData = {
       name: '',

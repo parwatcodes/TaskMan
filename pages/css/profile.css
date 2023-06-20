@@ -1,26 +1,47 @@
-.mainProfile {
-  display: flex;
-  width: 90%;
+.userProfile {
+  font-size: 14px;
+  position: absolute;
   margin: auto;
-  position: relative;
+  padding: 30px;
+  background-color: rgb(237, 239, 241);
+  border-radius: 10px;
+  z-index: 1;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
 }
 
-.sideProfile {
+.profile {
+  border: 0.5px solid #e1e4e8;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 20%;
-  border: 1px solid;
+  width: 300px;
 }
 
-.tasks {
-  padding: 20px;
-  width: 100%;
-  border: 1px solid;
+.profile img {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
 }
 
-.affr {
-  height: 200px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  font-size: 100px;
+.profile h2 {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.profile p {
+  color: #586069;
+  margin-top: 10px;
+  background-color: rgb(237, 239, 241);
+
+}
+
+.icon {
+  text-align: center;
+  color: #0c1372;
+}
+
+.icon i {
+  font-size: 150px;
 }

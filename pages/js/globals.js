@@ -12,6 +12,7 @@ import {
   getMembers,
   updateTask,
   getTaskById,
+  findUserByEmail,
   groupTaskByListName
 } from '../../helpers/api.js'
 
@@ -27,6 +28,7 @@ window.hideToast = hideToast;
 window.updateTask = updateTask;
 window.getMembers = getMembers;
 window.getTaskById = getTaskById;
+window.findUserByEmail = findUserByEmail;
 window.isAuthenticated = isAuthenticated;
 window.generatePassword = generatePassword;
 window.groupTaskByListName = groupTaskByListName;

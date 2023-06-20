@@ -102,6 +102,12 @@ export function searchTask(searchTerm) {
   return filteredTasks;
 }
 
+export function getLoggedUserInfo() {
+  let email = localStorage.getItem('email');
+
+  return findUserByEmail(email);
+}
+
 export function currentUserRole() {
   let email = localStorage.getItem('email');
   let user = findUserByEmail(email);
