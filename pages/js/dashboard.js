@@ -55,7 +55,7 @@ function appendToList(data, cardContainerType, listType) {
     taskFooter.className = 'task-footer';
 
     const flagIcon = document.createElement('i');
-    flagIcon.className = 'bi bi-speedometer';
+    flagIcon.className = 'bi bi-record-circle-fill';
     flagIcon.style.fontSize = '14px';
     flagIcon.style.color = PRIOTITY_MAPPER[item.priority];
 

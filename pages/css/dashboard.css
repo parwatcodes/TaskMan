@@ -29,12 +29,10 @@ body {
 }
 
 .assignee {
-  background-color: #0013FE;
-  color: #FFFFFF;
+  color: #212cb5;
   border-radius: 5px;
-  padding: 4px 6px;
   font-weight: 500;
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .task-footer {
