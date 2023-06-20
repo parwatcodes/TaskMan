@@ -63,6 +63,27 @@
       let { id, value } = event.target;
 
       taskModalData[id] = value;
+
+      displayStartEndDate();
+
+    }
+
+    function displayStartEndDate() {
+      let startDateLabel = document.getElementById('startDateLabel');
+        let dueDateLabel = document.getElementById('dueDateLabel');
+
+      if (taskModalData?.startDate) {
+        startDateLabel.style.display = 'block';
+        let startDateEle = document.getElementById("startDateValue");
+        startDateEle.innerText =  readableDateFormat(taskModalData?.startDate, 'T');
+      }
+
+      if (taskModalData?.endDate) {
+        dueDateLabel.style.display = 'block';
+        let endDateEle = document.getElementById("dueDateValue");
+        endDateEle.innerText = readableDateFormat(taskModalData?.endDate, 'T');
+      }
+
     }
 
     //Add user modal handling functions.
@@ -147,8 +168,6 @@
       addUserModal.style.display = 'block';
     }
 
-
-
   </script>
   <div>
     <div class="mainHeader">
@@ -170,9 +189,7 @@
 
   <div class="main">
 
-
     <!-- USER PROFILE MODAL -->
-
     <div class="modal1" id="profileModal">
       <div class="userProfile">
         <div class="profile">
@@ -180,10 +197,10 @@
           <div class="icon">
             <i class="bi bi-person-circle h1"></i>
           </div>
-          <h2 id="name"></h2>
-          <p id="email"></p>
-          <p id="role"></p>
-          <p id="joinedDate"></p>
+          <h2 id="user-name"></h2>
+          <p id="user-email"></p>
+          <p id="user-role"></p>
+          <p id="user-joinedDate"></p>
         </div>
       </div>
     </div>
@@ -249,11 +266,11 @@
           <i class="bi bi-briefcase " style="font-size: 25px;">&nbsp;&nbsp;</i>
           <input onchange="onChangeForTask(event)" id="name" type="text" placeholder="Task name" />
         </div>
-        <div style="display: flex; align-items: baseline;">
+        <div style="display: flex; align-items: baseline; flex-direction: column;">
           <span class="list" id="listType">ToDo</span>
-          <div id="dateContainer" style="display: none;">
-            <span id="startDateLabel">Start Date:</span>
-            <span id="dueDateLabel">Due Date:</span>
+          <div id="dateContainer">
+            <span id="startDateLabel">Start Date: <span id="startDateValue"></span> </span>
+            <span id="dueDateLabel">Due Date: <span id="dueDateValue"></span></span>
           </div>
         </div>
         <div class="content">
@@ -286,14 +303,14 @@
 
             <div class="dateWrapper">
               <label for="start"><i class="bi bi-calendar"></i>&nbsp;</i>Start Date</label>
-              <input class="picker" style="text-align: center; font-weight: 500;" type="datetime-local" id="startDate"
-                name="trip-start" value="2024-06-12T19:30">
+              <input onchange="onChangeForTask(event)" class="picker" style="text-align: center; font-weight: 500;"
+                type="datetime-local" id="startDate" name="trip-start" value="2024-06-12T19:30">
             </div>
 
             <div class="dateWrapper">
               <label for="end"><i class="bi bi-calendar-check"></i>&nbsp;</i>End Date</label>
-              <input class="picker" style="text-align: right; font-weight: 500;" type="datetime-local" id="endDate"
-                name="trip-end" min="2018-06-07T00:00" max="2024-06-14T00:00">
+              <input onchange="onChangeForTask(event)" class="picker" style="text-align: right; font-weight: 500;"
+                type="datetime-local" id="endDate" name="trip-end" min="2018-06-07T00:00" max="2024-06-14T00:00">
             </div>
 
             <div class="divWrapper">
@@ -387,6 +404,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/dayjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/plugin/customParseFormat.min.js"></script>
   <script type="module" src="./js/toast.js"></script>
   <script type="module" src="../helpers/validators.js"></script>
   <script type="module" src="./js/dashboard.js"></script>
@@ -428,18 +447,19 @@
         taskId = id;
         taskModalData = getTaskById(id);
 
-        let dateWrapperEle = document.getElementById('dateContainer');
+        let startDateLabel = document.getElementById('startDateLabel');
+        let dueDateLabel = document.getElementById('dueDateLabel');
 
         if (taskModalData?.startDate) {
-          dateWrapperEle.style.display = 'block';
-          let startDateEle = document.getElementById("startDateLabel");
-          startDateEle.innerText = `Start Date: ${taskModalData?.startDate}`;
+          startDateLabel.style.display = 'block';
+          let startDateEle = document.getElementById("startDateValue");
+          startDateEle.innerText = readableDateFormat(taskModalData?.startDate, 'T');
         }
 
         if (taskModalData?.endDate) {
-          dateWrapperEle.style.display = 'block';
-          let endDateEle = document.getElementById("dueDateLabel");
-          endDateEle.innerText = `Due Date: ${taskModalData?.endDate}`;
+          dueDateLabel.style.display = 'block';
+          let endDateEle = document.getElementById("dueDateValue");
+          endDateEle.innerText = readableDateFormat(taskModalData?.endDate, 'T');
         }
       } else {
         let mapper = {
@@ -470,12 +490,14 @@
         taskModalData.assignedTo = members[0].email;
       }
 
+      console.log('task', taskModalData.name);
       getInitialFormValues();
+
+      console.log('vv', document.getElementById('name').value);
     }
 
     function handleTaskSubmit() {
       if (taskModalData?.name || taskModalData?.description) {
-        const cardContainer = document.getElementById('cardToDo');
         if (taskId) {
           updateTask(taskId, taskModalData); //TODO: take only modified fields.
         } else {
