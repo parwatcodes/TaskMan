@@ -36,6 +36,8 @@ body {
 }
 
 .task-footer {
+  display: flex;
+  width: 100%;
   font-size: 12px;
   float: right;
 }
@@ -228,4 +230,8 @@ body {
 
 hr {
   margin: 5px;
+}
+
+#totalCost {
+  margin-left: 0px;
 }
