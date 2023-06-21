@@ -11,10 +11,12 @@ const PRIOTITY_MAPPER = {
 export function loadTask(searchTerm) {
   let taskList = groupTaskByListName();
 
-  // console.log('--', JSON.stringify(taskList, null, 2))
-
   if (searchTerm) {
     taskList = filterFromData(taskList, searchTerm);
+    document.querySelectorAll(".card").forEach(el => {
+      el.remove()
+    });
+  } else {
     document.querySelectorAll(".card").forEach(el => {
       el.remove()
     });
