@@ -134,3 +134,19 @@ export function logout() {
 
   goto("/pages/login.html");
 }
+
+export function filterFromData(data, searchTerm) {
+  const filteredData = {};
+
+  for (const key in data) {
+    const filteredArray = data[key].filter(item => {
+      const { name, description } = item;
+      return name.toLowerCase().includes(searchTerm.toLowerCase().trim()) || description.includes(searchTerm);
+    });
+    if (filteredArray.length > 0) {
+      filteredData[key] = filteredArray;
+    }
+  }
+
+  return filteredData;
+}

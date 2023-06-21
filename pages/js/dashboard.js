@@ -1,5 +1,5 @@
 import { LIST } from '../../helpers/constants.js';
-import { groupTaskByListName } from '../../helpers/api.js';
+import { filterFromData, groupTaskByListName, searchTask } from '../../helpers/api.js';
 import { readableDateFormat } from '../../helpers/utils.js';
 
 const PRIOTITY_MAPPER = {
@@ -8,8 +8,19 @@ const PRIOTITY_MAPPER = {
   'low': 'green'
 };
 
-export function loadTask() {
+export function loadTask(searchTerm) {
   let taskList = groupTaskByListName();
+
+  if (searchTerm) {
+    taskList = filterFromData(taskList, searchTerm);
+    document.querySelectorAll(".card").forEach(el => {
+      el.remove()
+    });
+  } else {
+    document.querySelectorAll(".card").forEach(el => {
+      el.remove()
+    });
+  }
 
   let inToDoTask = taskList?.['ToDo'];
   let inProgressTask = taskList?.['InProgress'];
@@ -93,4 +104,14 @@ function appendToList(data, cardContainerType, listType) {
     card.appendChild(cardBody);
     cardContainer.appendChild(card);
   });
+}
+
+let searchEle = document.getElementById('searchInput');
+
+searchEle.addEventListener("input", searchAllTask);
+
+function searchAllTask(event) {
+  let searchTerm = event.target?.value;
+
+  loadTask(searchTerm);
 }
