@@ -29,29 +29,36 @@ export function getAllTask() {
 export function addTask(data) {
   let appData = getAppData();
 
-  appData?.tasks?.push({...data, id: uuid()});
+  appData?.tasks?.push({ ...data, id: uuid() });
   localStorage.setItem(APP_DATA_KEY, stringifyIt(appData));
 }
 
 export function addUser(data) {
   let appData = getAppData();
 
-  appData?.users?.push({...data, id: uuid()});
+  appData?.users?.push({ ...data, id: uuid() });
   localStorage.setItem(APP_DATA_KEY, stringifyIt(appData));
 }
 
 // Get the task for user. If loggedIn user is admin, fetch all task else fetch task assigned.
 export function getTaskList() {
-  let allTask = getAllTask();
+  let allTask;
 
-  if (isAdmin()){
-    return allTask;
+  if (isAdmin()) {
+    allTask = getAllTask().map(task => {
+      let userHourlyRate = findUserByEmail(task.assignedTo)?.hourlyRate;
+      return { ...task, userHourlyRate };
+    });
+  } else {
+    let currentMemberEmail = localStorage.getItem('email');
+    let userHourlyRate = findUserByEmail(currentMemberEmail)?.hourlyRate;
+
+    allTask = getAllTask()
+      ?.filter(task => task.assignedTo === currentMemberEmail)
+      ?.map(task => ({ ...task, userHourlyRate }));
   }
 
-  let currentMemberEmail = localStorage.getItem('email');
-  let memberTask = allTask?.filter(task => task.assignedTo === currentMemberEmail);
-
-  return memberTask;
+  return allTask;
 }
 
 export function groupTaskByListName() {
@@ -125,5 +132,5 @@ export function logout() {
   localStorage.removeItem('isAuthenticated');
   localStorage.removeItem('email');
 
-  goto("/pages/login.html")
+  goto("/pages/login.html");
 }
