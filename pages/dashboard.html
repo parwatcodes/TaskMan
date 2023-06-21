@@ -27,7 +27,7 @@
         let backlogEle = document.getElementById('backlog');
         let newUserEle = document.getElementById('newUser');
 
-        backlogEle.style.display = 'block';
+        // backlogEle.style.display = 'block';
         newUserEle.style.display = 'block';
 
         // var
@@ -182,7 +182,7 @@
     <div class="mainHeader">
       <div class="menu">
         <div onclick="goto('/pages/dashboard.html')"><i class="bi bi-card-heading"></i>&nbsp;DashBoard</div>
-        <div id="backlog"><i class="bi bi-safe"></i>&nbsp;Backlog</div>
+        <div id="backlog" style="display: none;"><i class="bi bi-safe"></i>&nbsp;Backlog</div>
         <div id="newUser" onclick="openAddUserModal()"><i class="bi bi-plus"></i>&nbsp;New User</div>
         <div onclick="openProfileModal()"><i class="bi bi-person-circle"></i>&nbsp;Profile</div>
         <div onclick="logout()"><i class="bi bi-box-arrow-right"></i>&nbsp;Logout</div>
@@ -357,7 +357,7 @@
       </div>
     </div>
 
-    <div class="searchContainer">
+    <div class="searchContainer" style="visibility: hidden;">
       <i class="bi bi-search"></i><input class="search-bar" type="text" placeholder="Search Items" />
     </div>
 
