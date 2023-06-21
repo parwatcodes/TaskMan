@@ -507,8 +507,12 @@
       listTypeEle.innerHTML = listType;
 
       let members = getMembers();
+
+
+
       if (members?.length) {
         let selectEle = document.getElementById('assignedTo');
+        selectEle.innerText = null;
 
         members.forEach(member => {
           let { email } = member;
