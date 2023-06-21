@@ -1,6 +1,6 @@
 import { LIST } from '../../helpers/constants.js';
 import { groupTaskByListName } from '../../helpers/api.js';
-import { readableDateFormat } from '../../helpers/utils.js'
+import { readableDateFormat } from '../../helpers/utils.js';
 
 const PRIOTITY_MAPPER = {
   'high': 'red',
@@ -54,6 +54,16 @@ function appendToList(data, cardContainerType, listType) {
     const taskFooter = document.createElement('div');
     taskFooter.className = 'task-footer';
 
+    const costSpan = document.createElement('span');
+    let totalCost = Number(item.hoursWorked || 0) * Number(item.userHourlyRate || 0);
+    costSpan.textContent = 'Cost: $' + totalCost;
+    costSpan.style.fontWeight = 500;
+    costSpan.style.flex = 1;
+
+    if (item.listName !== 'Done' || !totalCost) {
+      costSpan.style.visibility = 'hidden';
+    }
+
     const flagIcon = document.createElement('i');
     flagIcon.className = 'bi bi-record-circle-fill';
     flagIcon.style.fontSize = '14px';
@@ -63,7 +73,7 @@ function appendToList(data, cardContainerType, listType) {
     clockIcon.className = 'bi bi-clock-fill';
     clockIcon.style.fontSize = '14px';
 
-    let formattedEndDate = readableDateFormat(item.endDate)
+    let formattedEndDate = readableDateFormat(item.endDate);
 
     const dateSpan = document.createElement('span');
     dateSpan.textContent = formattedEndDate || '_';
@@ -73,6 +83,8 @@ function appendToList(data, cardContainerType, listType) {
     cardBody.appendChild(description);
     cardBody.appendChild(assignee);
     cardBody.appendChild(hr);
+    // taskFooter.appendChild(costIcon);
+    taskFooter.appendChild(costSpan);
     taskFooter.appendChild(flagIcon);
     taskFooter.appendChild(clockIcon);
     clockIcon.appendChild(dateSpan);
