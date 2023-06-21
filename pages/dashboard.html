@@ -89,7 +89,6 @@
         let endDateEle = document.getElementById("dueDateValue");
         endDateEle.innerText = readableDateFormat(taskModalData?.endDate, 'T');
       }
-
     }
 
     //Add user modal handling functions.
@@ -138,6 +137,8 @@
       }
 
       addUser(userData);
+
+      showToast('Added user...')
 
       document.getElementById('user-form').reset();
 
@@ -517,6 +518,10 @@
 
       if (!taskId) {
         taskModalData.assignedTo = members[0].email;
+      }
+
+      if (listType === 'Done') {
+        document.getElementById('hoursWorked').removeAttribute("disabled");
       }
 
       getInitialFormValues();
