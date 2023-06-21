@@ -65,7 +65,7 @@ function appendToList(data, cardContainerType, listType) {
     }
 
     const flagIcon = document.createElement('i');
-    flagIcon.className = 'bi bi-record-circle-fill';
+    flagIcon.className = 'bi bi-tag-fill';
     flagIcon.style.fontSize = '14px';
     flagIcon.style.color = PRIOTITY_MAPPER[item.priority];
 
