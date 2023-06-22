@@ -106,9 +106,9 @@ function appendToList(data, cardContainerType, listType) {
   });
 }
 
-let searchEle = document.getElementById('searchInput');
+let searchEle = document?.getElementById('searchInput');
 
-searchEle.addEventListener("input", searchAllTask);
+searchEle?.addEventListener("input", searchAllTask);
 
 function searchAllTask(event) {
   let searchTerm = event.target?.value;
