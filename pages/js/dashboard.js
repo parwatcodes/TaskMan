@@ -49,7 +49,7 @@ function appendToList(data, cardContainerType, listType) {
   data.forEach(item => {
     const card = document.createElement('div');
     card.className = 'card';
-    card.id = `${listType}`;
+    card.id = item.id;
     card.draggable = true;
     card.onclick = (event) => toggleTaskModal(event, listType, item.id);
 
