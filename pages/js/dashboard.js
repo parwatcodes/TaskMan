@@ -12,24 +12,15 @@ const PRIOTITY_MAPPER = {
 export function loadTask(searchTerm) {
   let taskList = groupTaskByListName();
 
-<<<<<<< HEAD
   //Quick fix. TODO: Refactor this
   if (searchTerm) {
     taskList = filterFromData(taskList, searchTerm);
     document.querySelectorAll(".card").forEach(el => {
-      el.remove();
+      el.remove()
     });
   } else {
     document.querySelectorAll(".card").forEach(el => {
-      el.remove();
-=======
-  // console.log('--', JSON.stringify(taskList, null, 2))
-
-  if (searchTerm) {
-    taskList = filterFromData(taskList, searchTerm);
-    document.querySelectorAll(".card").forEach(el => {
       el.remove()
->>>>>>> 5ef3162 (Add search)
     });
   }
 
@@ -123,15 +114,9 @@ function appendToList(data, cardContainerType, listType) {
   });
 }
 
-<<<<<<< HEAD
 let searchEle = document?.getElementById('searchInput');
 
 searchEle?.addEventListener("input", searchAllTask);
-=======
-let searchEle = document.getElementById('searchInput');
-
-searchEle.addEventListener("input", searchAllTask);
->>>>>>> 5ef3162 (Add search)
 
 function searchAllTask(event) {
   let searchTerm = event.target?.value;
