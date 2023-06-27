@@ -16,11 +16,11 @@ export function loadTask(searchTerm) {
   if (searchTerm) {
     taskList = filterFromData(taskList, searchTerm);
     document.querySelectorAll(".card").forEach(el => {
-      el.remove();
+      el.remove()
     });
   } else {
     document.querySelectorAll(".card").forEach(el => {
-      el.remove();
+      el.remove()
     });
   }
 
