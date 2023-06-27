@@ -1,6 +1,7 @@
 import { LIST } from '../../helpers/constants.js';
 import { filterFromData, groupTaskByListName, searchTask } from '../../helpers/api.js';
 import { readableDateFormat } from '../../helpers/utils.js';
+import { dragFrom, dropTo } from './droppable.js';
 
 const PRIOTITY_MAPPER = {
   'high': 'red',
@@ -11,6 +12,7 @@ const PRIOTITY_MAPPER = {
 export function loadTask(searchTerm) {
   let taskList = groupTaskByListName();
 
+  //Quick fix. TODO: Refactor this
   if (searchTerm) {
     taskList = filterFromData(taskList, searchTerm);
     document.querySelectorAll(".card").forEach(el => {
@@ -43,6 +45,10 @@ function appendToList(data, cardContainerType, listType) {
   data.forEach(item => {
     const card = document.createElement('div');
     card.className = 'card';
+    card.draggable = true;
+    card.ondragstart = (event) => dragFrom(event);
+    card.ondrop = (event) => dropTo(event);
+    card.ondragover = (event) => event.preventDefault();
     card.onclick = (event) => toggleTaskModal(event, listType, item.id);
 
     const cardBody = document.createElement('div');
