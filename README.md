@@ -19,6 +19,13 @@ TaskMan is a powerful and intuitive web application built using JavaScript, HTML
 - BootStrap
 - Day.js
 
+## Credits
+Design taken from figma
+
+Link - https://www.figma.com/community/file/995666043585336668/Task-Management-App
+
+Thanks to https://www.figma.com/@SanderVreeken
+
 ## Usage
 
 The app seeds default one of each admin, member and task, using the file `/helpers/seed.js`.
