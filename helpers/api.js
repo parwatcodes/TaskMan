@@ -150,3 +150,17 @@ export function filterFromData(data, searchTerm) {
 
   return filteredData;
 }
+
+// updates only the with the keys passed.
+export function genericUpdate(id, data) {
+  let appData = getAppData();
+  let taskToUpdate = appData?.tasks?.find(task => task.id === id);
+
+  Object.keys(data).forEach(d => {
+    taskToUpdate[d] = data[d]
+  });
+  let allTask = appData?.tasks?.map(task => task.id === id ? taskToUpdate : task);
+
+  appData.tasks = allTask;
+  localStorage.setItem(APP_DATA_KEY, stringifyIt(appData));
+}
