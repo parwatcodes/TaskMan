@@ -19,7 +19,13 @@ export function dropTo(ev, cardContainerType) {
     ev.target.appendChild(document.getElementById(data));
   }
 
-  let listName = listNameEle?.id.replace('card', '');
+  //TODO: Instead of this check, let the cardContainerType be cardDone.(dashboard.js)
+  let replaceStr = 'card';
+  if (listNameEle.id === 'cardInDone') {
+    replaceStr = 'cardIn'
+  }
+
+  let listName = listNameEle?.id.replace(replaceStr, '');
   updateCardStatusType(data, listName)
 }
 

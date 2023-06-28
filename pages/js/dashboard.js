@@ -41,7 +41,6 @@ export function loadTask(searchTerm) {
 function appendToList(data, cardContainerType, listType) {
   const cardContainer = document.getElementById(cardContainerType);
   cardContainer.ondrop = (event) => dropTo(event, cardContainerType);
-  cardContainer.ondragstart = (event) => dragFrom(event);
   cardContainer.ondragover = (event) => event.preventDefault();
 
   document.getElementById(`total${cardContainerType}`).innerText = data?.length;
@@ -51,6 +50,8 @@ function appendToList(data, cardContainerType, listType) {
     card.className = 'card';
     card.id = item.id;
     card.draggable = true;
+    cardContainer.ondragstart = (event) => dragFrom(event);
+
     card.onclick = (event) => toggleTaskModal(event, listType, item.id);
 
     const cardBody = document.createElement('div');
