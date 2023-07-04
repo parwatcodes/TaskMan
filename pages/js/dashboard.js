@@ -16,11 +16,11 @@ export function loadTask(searchTerm) {
   if (searchTerm) {
     taskList = filterFromData(taskList, searchTerm);
     document.querySelectorAll(".card").forEach(el => {
-      el.remove()
+      el.remove();
     });
   } else {
     document.querySelectorAll(".card").forEach(el => {
-      el.remove()
+      el.remove();
     });
   }
 
@@ -32,9 +32,7 @@ export function loadTask(searchTerm) {
   let cardType = ['cardToDo', 'cardInProgress', 'cardInReview', 'cardInDone'];
 
   [inToDoTask, inProgressTask, inReviewTask, inDoneTask].forEach((taskArr, idx) => {
-    if (taskArr?.length) {
-      appendToList(taskArr, cardType[idx], listType[idx]);
-    }
+    appendToList(taskArr, cardType[idx], listType[idx]);
   });
 }
 
@@ -43,9 +41,9 @@ function appendToList(data, cardContainerType, listType) {
   cardContainer.ondrop = (event) => dropTo(event, cardContainerType);
   cardContainer.ondragover = (event) => event.preventDefault();
 
-  document.getElementById(`total${cardContainerType}`).innerText = data?.length;
+  document.getElementById(`total${cardContainerType}`).innerText = data?.length || 0;
 
-  data.forEach(item => {
+  data?.forEach(item => {
     const card = document.createElement('div');
     card.className = 'card';
     card.id = item.id;
