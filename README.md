@@ -45,4 +45,12 @@ password: Member@123
 ```
 ## Snapshots
 
-![Alt text](/public/images/screenshot-2023-06-21-00-43-16.png)
+<img src="./public//images/Login%20page.jpeg" width="300" height="400"/>
+
+<img src="./public//images/screenshot-2023-06-21-00-43-16.png" width="200" height="200"/>
+
+
+<img src="./public//images/task.jpeg" width="200" height="200"/>
+
+
+<img src="./public//images/add-user.jpeg" width="200" height="200"/>
