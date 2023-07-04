@@ -47,10 +47,10 @@ password: Member@123
 
 <img src="./public//images/Login%20page.jpeg" width="300" height="400"/>
 
-<img src="./public//images/screenshot-2023-06-21-00-43-16.png" width="200" height="200"/>
+<img src="./public//images/screenshot-2023-06-21-00-43-16.png" width="900" height="400"/>
 
 
-<img src="./public//images/task.jpeg" width="200" height="200"/>
+<img src="./public//images/task.jpeg" width="500" height="500"/>
 
 
-<img src="./public//images/add-user.jpeg" width="200" height="200"/>
+<img src="./public//images/add-user.jpeg" width="450" height="500"/>
