@@ -4,6 +4,8 @@ TaskMan - A task management web app.
 
 #### <a target="_blank" href="task-man.surge.sh/">task-man.surge.sh/</a>
 
+http://taskman-static.s3-website-us-west-2.amazonaws.com/
+
 
 
 ## Description
